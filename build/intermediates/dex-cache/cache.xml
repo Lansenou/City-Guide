@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\exploded-aar\CityGuide\library\unspecified\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a316d02098ee8aa7deec5e2c024a1680c54fcc48">
+        <dex dex="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\classes-ae68d5438ca470b9ccd1e4ca1c7ca3383ef961eb.jar" />
+    </item>
+    <item
+        jar="C:\Users\Mustafa\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-05f26e4c16caf76a57191e2864310745e01afa3d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\classes-1b98567f1b9c2b6563cfe449bac15e5672f76dbb.jar" />
+    </item>
+    <item
+        jar="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\classes-33215ea94d74dab7bc2161ea17fd9fea58ef9926.jar" />
+    </item>
+    <item
+        jar="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\classes-11af073f6b2f038339e706307e26b6f86c2d3d74.jar" />
+    </item>
+    <item
+        jar="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-8783b6fc44e78c757371dc525debe6c6046f3a8e.jar" />
+    </item>
+
+</items>

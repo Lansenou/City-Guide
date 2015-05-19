@@ -1,0 +1,7 @@
+C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\classes\debug
+C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-05f26e4c16caf76a57191e2864310745e01afa3d.jar
+C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\classes-ae68d5438ca470b9ccd1e4ca1c7ca3383ef961eb.jar
+C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-8783b6fc44e78c757371dc525debe6c6046f3a8e.jar
+C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\classes-33215ea94d74dab7bc2161ea17fd9fea58ef9926.jar
+C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\classes-11af073f6b2f038339e706307e26b6f86c2d3d74.jar
+C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\classes-1b98567f1b9c2b6563cfe449bac15e5672f76dbb.jar

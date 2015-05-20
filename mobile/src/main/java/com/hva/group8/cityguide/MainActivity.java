@@ -1,13 +1,12 @@
 package com.hva.group8.cityguide;
 
-import android.app.ActionBar;
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.Menu;
@@ -16,29 +15,34 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.hva.group8.cityguide.Managers.UserInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
+
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
-    private CustomDrawerAdapter mDrawerAdaptor;
+    private CustomDrawerAdapter mDrawerAdapter;
     private List<DrawerItem> mDrawerItems = new ArrayList<DrawerItem>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Initialize
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        UserInfo.getInstance().instantiate(getApplicationContext());
 
-
+        //Nav Drawer
         mTitle = mDrawerTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
         // Add Drawer Item to dataList
@@ -48,18 +52,16 @@ public class MainActivity extends ActionBarActivity {
         mDrawerItems.add(new DrawerItem("Settings", R.drawable.ic_settings));
         mDrawerItems.add(new DrawerItem("Account", R.drawable.ic_menu_user));
 
-        mDrawerAdaptor = new CustomDrawerAdapter(this, R.layout.custom_drawer_item, mDrawerItems);
+        //Nav Drawer adapter
+        mDrawerAdapter = new CustomDrawerAdapter(this, R.layout.custom_drawer_item, mDrawerItems);
+        mDrawerList.setAdapter(mDrawerAdapter);
 
-        mDrawerList.setAdapter(mDrawerAdaptor);
-
+        //Nav Drawer Click Listener
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_drawer, R.string.drawer_open,
-                R.string.drawer_close) {
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
             public void onDrawerClosed(View view) {
                 getSupportActionBar().setTitle(mTitle);
                 invalidateOptionsMenu();
@@ -74,7 +76,25 @@ public class MainActivity extends ActionBarActivity {
         if (savedInstanceState == null) {//Default selected item=0
             SelectItem(0);
         }
+    }
 
+    public void SwitchFragment(Fragment fragment, int navBarPos) {
+        mDrawerList.setItemChecked(navBarPos, true);
+        setTitle(mDrawerItems.get(navBarPos).getItemName());
+        SwitchFragment(fragment);
+    }
+
+    public void SwitchFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        //MainFragment.getInstance().getTabPageIndicatorAdapter().replaceHomeFragment(fragment);
+
+        //Add to fragment manager
+        // if (!fragment.isAdded())
+        //     transaction.add(R.id.content_frame, fragment, fragment.getTag());
+
+
+        transaction.replace(R.id.content_frame, fragment);
+        transaction.commit();
     }
 
     @Override
@@ -92,20 +112,17 @@ public class MainActivity extends ActionBarActivity {
 //            case 1:
 //                fragment = BlankFragment.newInstance();
 //                //Bundle args = new Bundle();
-//                //args.putString("text", "This is Drawer item1");
+//            \    //args.putString("text", "This is Drawer item1");
 //                //fragment.setArguments(args);
 //                break;
             default:
                 fragment = BlankFragment.newInstance();
                 break;
         }
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_frame, fragment);
-        transaction.commit();
-        mDrawerList.setItemChecked(position, true);
-        setTitle(mDrawerItems.get(position).getItemName());
+        SwitchFragment(fragment, position);
         mDrawerLayout.closeDrawer(mDrawerList);
     }
+
 
     @Override
     public void setTitle(CharSequence title) {
@@ -135,7 +152,13 @@ public class MainActivity extends ActionBarActivity {
     public void onBackPressed() {
         if(mDrawerLayout.isDrawerOpen(Gravity.START))
             mDrawerLayout.closeDrawer(Gravity.START);
-        else super.onBackPressed();
+        else {
+            getSupportFragmentManager().popBackStack();
+            //finish();
+            //overridePendingTransition( 0, 0);
+            //startActivity(getIntent());
+            //overridePendingTransition(0, 0);
+        }
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {

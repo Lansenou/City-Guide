@@ -18,4 +18,4 @@
     <item android:state_focused="true" android:state_selected="false" android:state_pressed="true" android:drawable="@drawable/tab_unselected_pressed" />
     <item android:state_focused="true" android:state_selected="true"  android:state_pressed="true" android:drawable="@drawable/tab_selected_pressed" />
 </selector>
-<!-- From: file:/C:/Users/Mustafa/Documents/CityGuide/mobile/src/main/res/drawable/custom_tab_indicator.xml -->
+<!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/mobile/src/main/res/drawable/custom_tab_indicator.xml -->

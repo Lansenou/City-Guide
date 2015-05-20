@@ -1,36 +1,25 @@
 package com.hva.group8.cityguide;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.viewpagerindicator.TabPageIndicator;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-
 public class MainFragment extends Fragment {
+    private static MainFragment instance = null;
     private ViewPager mPager;
     private TabPageIndicator mTabPageIndicator;
     private TabPageIndicatorAdapter mTabPageIndicatorAdapter;
     private View view;
-    private static MainFragment instance = null;
+
+    public MainFragment() {
+    }
 
     public static MainFragment getInstance() {
         if (instance == null) {
@@ -45,21 +34,29 @@ public class MainFragment extends Fragment {
     }
 
     public TabPageIndicatorAdapter getTabPageIndicatorAdapter() {
+        if (mTabPageIndicatorAdapter == null) {
+            mTabPageIndicatorAdapter = new TabPageIndicatorAdapter(getFragmentManager());
+        }
+        if (mTabPageIndicator == null)
+            Log.e("Main Fragment", "mTabPageIndicator was null");
         return mTabPageIndicatorAdapter;
-    }
-
-    public ViewPager getPager() {
-        return mPager;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         view = inflater.inflate(R.layout.fragment_main, container, false);
-        mPager = (ViewPager) view.findViewById(R.id.pager);
+
+        //Get from
         mTabPageIndicator = (TabPageIndicator) view.findViewById(R.id.indicator);
-        mTabPageIndicatorAdapter = new TabPageIndicatorAdapter(getFragmentManager());
-        mPager.setAdapter(mTabPageIndicatorAdapter);
+        mPager = (ViewPager) view.findViewById(R.id.pager);
+
+        //Needs to be in this order to make sure the pager has an adapter
+        mPager.setAdapter(getTabPageIndicatorAdapter());
         mTabPageIndicator.setViewPager(mPager);
+
+        Log.e("Adapter is null", (mTabPageIndicator == null) + "");
+        Log.e("idk", "test");
         return view;
     }
 
@@ -69,5 +66,4 @@ public class MainFragment extends Fragment {
         instance = null;
         //mTabPageIndicatorAdapter.removeAll();
     }
-
 }

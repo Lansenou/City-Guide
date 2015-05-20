@@ -3,7 +3,6 @@ package com.hva.group8.cityguide;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +26,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        //TODO Style SearchView
-
         mExpendableListView = (ExpandableListView)view.findViewById(R.id.expandableListView);
         mExpendableListView.setDividerHeight(2);
         mExpendableListView.setGroupIndicator(null);
@@ -39,7 +36,7 @@ public class HomeFragment extends Fragment {
         homeListAdapter
                 .setInflater(
                         (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE),
-                        this.getActivity());
+                        (MainActivity) getActivity());
 
         mExpendableListView.setAdapter(homeListAdapter);
         return view;
@@ -49,10 +46,10 @@ public class HomeFragment extends Fragment {
         List<HomeGroupItem> a = new ArrayList<HomeGroupItem>();
         List<HomeGroupItem> b = new ArrayList<HomeGroupItem>();
         groupItems.add(new HomeGroupItem(R.drawable.categories, "Categories"));
-        a.add(new HomeGroupItem(R.drawable.ic_launcher, "test2"));
-        groupItems.add(new HomeGroupItem(R.drawable.top_locations, "Top 10 locations", a));
-        b.add(new HomeGroupItem(R.drawable.ic_launcher, "test3"));
-        groupItems.add(new HomeGroupItem(R.drawable.nearby_locations, "Nearby locations", b));
+        a.add(new HomeGroupItem(R.drawable.no_image, "test2"));
+        groupItems.add(new HomeGroupItem(R.drawable.cat_top10, "Top 10 locations", a));
+        b.add(new HomeGroupItem(R.drawable.no_image, "test3"));
+        groupItems.add(new HomeGroupItem(R.drawable.cat_nearby, "Nearby locations", b));
     }
 
     @Override

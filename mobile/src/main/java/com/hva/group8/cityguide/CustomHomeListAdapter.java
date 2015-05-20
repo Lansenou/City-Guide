@@ -1,22 +1,14 @@
 package com.hva.group8.cityguide;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.CheckedTextView;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,20 +17,20 @@ import java.util.List;
 
 public class CustomHomeListAdapter extends BaseExpandableListAdapter {
 
-    private List<HomeGroupItem> groupItem, tempChild;
     public LayoutInflater mInflater;
-    public Activity activity;
+    public MainActivity activity;
+    private List<HomeGroupItem> groupItem, tempChild;
     private int lastExpandedPosition = -1;
     private ExpandableListView listView;
 
     public CustomHomeListAdapter(List<HomeGroupItem> grList, ExpandableListView listView) {
-        groupItem = grList;
+        this.groupItem = grList;
         this.listView = listView;
     }
 
-    public void setInflater(LayoutInflater mInflater, Activity act) {
+    public void setInflater(LayoutInflater mInflater, MainActivity act) {
         this.mInflater = mInflater;
-        activity = act;
+        this.activity = act;
     }
 
 
@@ -55,19 +47,19 @@ public class CustomHomeListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
-        tempChild = (List<HomeGroupItem>) groupItem.get(groupPosition).getChildList();
+        tempChild = groupItem.get(groupPosition).ChildList;
 
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.child_row, null);
         }
         TextView text = (TextView) convertView.findViewById(R.id.textView);
-        text.setText(tempChild.get(childPosition).getText());
+        text.setText(tempChild.get(childPosition).Title);
         ImageView image = (ImageView) convertView.findViewById(R.id.image);
-        image.setImageResource(tempChild.get(childPosition).getImageId());
+        image.setImageResource(tempChild.get(childPosition).ImageID);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity, tempChild.get(childPosition).getText(),
+                Toast.makeText(activity, tempChild.get(childPosition).Title,
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -76,7 +68,10 @@ public class CustomHomeListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        tempChild = ((List<HomeGroupItem>) groupItem.get(groupPosition).getChildList());
+        if (groupItem.isEmpty() || groupPosition >= groupItem.size())
+            return 0;
+
+        tempChild = groupItem.get(groupPosition).ChildList;
         return (tempChild == null) ? 0 : tempChild.size();
     }
 
@@ -98,11 +93,9 @@ public class CustomHomeListAdapter extends BaseExpandableListAdapter {
     @Override
     public void onGroupExpanded(int groupPosition) {
         if (groupPosition == 0) {
-            MainFragment.getInstance().getTabPageIndicatorAdapter().replaceHomeFragment(BlankFragment.newInstance());
-            MainFragment.getInstance().getPager().setAdapter(MainFragment.getInstance().getTabPageIndicatorAdapter());
+            activity.SwitchFragment(CategoryFragment.newInstance());
         } else {
-            if (lastExpandedPosition != -1
-                    && groupPosition != lastExpandedPosition) {
+            if (lastExpandedPosition != -1 && groupPosition != lastExpandedPosition) {
                 listView.collapseGroup(lastExpandedPosition);
             }
             super.onGroupExpanded(groupPosition);
@@ -124,15 +117,15 @@ public class CustomHomeListAdapter extends BaseExpandableListAdapter {
         }
 
         TextView text = (TextView) convertView.findViewById(R.id.textView);
-        text.setText(groupItem.get(groupPosition).getText());
+        text.setText(groupItem.get(groupPosition).Title);
 
         ImageView image = (ImageView) convertView.findViewById(R.id.image);
-        image.setImageResource(groupItem.get(groupPosition).getImageId());
+        image.setImageResource(groupItem.get(groupPosition).ImageID);
         //((TextView) convertView).setChecked(isExpanded);
 
         ImageView indicator = (ImageView) convertView.findViewById(R.id.indicator);
         int imageResourceId = isExpanded ? R.drawable.arrow_down : R.drawable.arrow_right;
-        if (groupItem.get(groupPosition).getChildList() != null)
+        if (groupItem.get(groupPosition).ChildList != null)
             indicator.setImageResource(imageResourceId);
         return convertView;
     }

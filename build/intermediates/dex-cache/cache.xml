@@ -2,46 +2,160 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\exploded-aar\CityGuide\library\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="a316d02098ee8aa7deec5e2c024a1680c54fcc48">
-        <dex dex="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\classes-ae68d5438ca470b9ccd1e4ca1c7ca3383ef961eb.jar" />
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\City-Guide\library\unspecified\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="38bd9151c24d88d7ac36263e17bcb27445309cf6">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-8c5d4bf7d55c5efb20b01e740c4a21eedda6e66f.jar" />
     </item>
     <item
-        jar="C:\Users\Mustafa\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-05f26e4c16caf76a57191e2864310745e01afa3d.jar" />
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="3988694bf9d8186ff97ad5cdfa4ed88b5010fe08">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-b896271aa14b84f48799c43b4063838fdebe79ef.jar" />
     </item>
     <item
-        jar="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
-        <dex dex="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\classes-1b98567f1b9c2b6563cfe449bac15e5672f76dbb.jar" />
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="f2f7ec211ce4d244ee97a57523eeb4526dc3cf8a">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-550f3878c590563fff4c28644c49dce5e6984aed.jar" />
     </item>
     <item
-        jar="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\classes-33215ea94d74dab7bc2161ea17fd9fea58ef9926.jar" />
+        jar="C:\Users\Lansenou\.gradle\caches\modules-2\files-2.1\com.nostra13.universalimageloader\universal-image-loader\1.9.3\a85588bec3e2c4584d593d3f15df1677321bca72\universal-image-loader-1.9.3.jar"
+        jumboMode="false" revision="21.1.2" sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.3-457145261b182f999bec3054d44ae232155fa077.jar" />
     </item>
     <item
-        jar="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\classes-11af073f6b2f038339e706307e26b6f86c2d3d74.jar" />
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="e35fae1b377c23aa5fd2d309a190c2d0f73d54ec">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-97ecc86729fccf2a555e984a3e5580f2a176ce63.jar" />
     </item>
     <item
-        jar="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\Mustafa\Documents\CityGuide\mobile\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-8783b6fc44e78c757371dc525debe6c6046f3a8e.jar" />
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="a0ce76dfaccbfbd6c551ed2174280aaabe60fe47">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-4439d4c21775e9ce838d35849454aa1e38b227e4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="e5b9f5b0aa8dee788beb63d23832cb29ce771343">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-4dc518541d60ea1948fc60957315395161e2c7e3.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="7215ac1f2fca947b9415a6ee2a1bf991364aab24">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-cd1dd7ac41348171b09445c46d0dc62dc6ccf849.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="bb36004beb02b69562cbec9aa7d6a3cf16bf5d1b">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-59421aeb55e9efcfedfe1b3e8d5d41d6ac17d343.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="5ea948d825957be6c4358c48422bee60eef2d487">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-b8028ceed3c4137869821d54715091f8cdcd36ca.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
+        jumboMode="false" revision="21.1.2" sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-809e1aeb4b6fc4ca0151504f111242fbe9be4e53.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="0708ef60917bf94913fe9ef972a655b99462dca7">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-f1c498d46bbef782f1e4ef2114434fbaeb283e6e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.0.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-9d8492308c7e584210432dddc1429e8b647b31aa.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="565a01f90f1529f73362707c4c185d0623a68782">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-0ad58278728a538b3d1f91b94342c3d0588e3775.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="59652857a825fff0de62166fca1bc9553cc01abb">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-da8ae8965f3fdff5307d210ca1c1997042e92e2c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="4f4fe3c23776540625f3c2844152a7510fddf9f1">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-c9258e8822c339386a1b5c3300f13f5a7923e78a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="3b4ff5c39dace8f3b4ab4cab8191785547a0815f">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-725a83eb5988de6235881c7d803f71aac48f3b01.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-3a92dd64eb141534a40f90d09ff001d0a17eba0e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="0180d031a7b54dabb93b4af3869468b55dc938bd">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-d8744df02f4e37e55129168d475d7b6587e30738.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="b2c07cdb814fe988ad05f7b4d767a841514a5991">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-e7a2b7b75932931f2b550975e1373e1cff358b65.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\libs\internal_impl-22.0.0.jar"
+        jumboMode="false" revision="21.1.2" sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-52bbfe5f249efd7c11332c3f3f9820fcac557ea2.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="9c9dea9e85aceb09d95df5e6f7bc8a43fc286068">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-da4cbbb8aa5cc21364ffba7ea720543e9d2296e6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="fe3e0c6de7cceed888b277487238b6af9a1cc299">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-8cdefef9772f9c5e7f30956ce8dd2be82870fdc6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="e5bf453b070c1e39297986144960e45afa0fdfad">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-f5eac8475e6f4c9bd21f0c4559a823d1318a622e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="6046e5cdaf799120b7c56a5a061d80e8854c4d34">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-69bcb30446e3a6725de6a8f7c29a3f5bbd190599.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.3.0\classes.jar"
+        jumboMode="false" revision="21.1.2" sha1="b48d5c51a9a9e329005106b4667f54948de4d4d8">
+        <dex
+            dex="C:\Users\Lansenou\Desktop\Git\City-Guide\mobile\build\intermediates\pre-dexed\debug\classes-6f7bfe162eceb9d93970f076cc564ca2cb5c8c28.jar" />
     </item>
 
 </items>

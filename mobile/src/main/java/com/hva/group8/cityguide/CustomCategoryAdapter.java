@@ -1,21 +1,17 @@
 package com.hva.group8.cityguide;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseExpandableListAdapter;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
 /**
- * Created by Mustafa on 6-5-2015.
+ * Created by Lansenou on 6-5-2015.
  */
 
 public class CustomCategoryAdapter extends ArrayAdapter<HomeGroupItem> {
@@ -26,36 +22,24 @@ public class CustomCategoryAdapter extends ArrayAdapter<HomeGroupItem> {
         this.resource = resource;
     }
 
+
     @Override
-    public View getGroupView(final int groupPosition, boolean isExpanded,
-                             View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null)
+            convertView = LayoutInflater.from(getContext()).inflate(resource, parent, false);
 
-        if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.group_row, null);
-        }
+        //Get item
+        HomeGroupItem item = getItem(position);
 
-        TextView text = (TextView) convertView.findViewById(R.id.textView);
-        text.setText(groupItem.get(groupPosition).getText());
+        //Picture
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.image);
+        imageView.setImageResource(item.ImageID);
 
-        ImageView image = (ImageView) convertView.findViewById(R.id.image);
-        image.setImageResource(groupItem.get(groupPosition).getImageId());
-        //((TextView) convertView).setChecked(isExpanded);
+        //Title
+        TextView themeText = (TextView) convertView.findViewById(R.id.textView);
+        themeText.setText(item.Title);
 
-        ImageView indicator = (ImageView) convertView.findViewById(R.id.indicator);
-        int imageResourceId = isExpanded ? R.drawable.arrow_down : R.drawable.arrow_right;
-        if (groupItem.get(groupPosition).getChildList() != null)
-            indicator.setImageResource(imageResourceId);
         return convertView;
-    }
-
-    @Override
-    public boolean hasStableIds() {
-        return false;
-    }
-
-    @Override
-    public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return false;
     }
 
 }

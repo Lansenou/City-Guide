@@ -8,37 +8,31 @@ import java.util.List;
 
 public class HomeGroupItem {
 
-    String text;
-    int imageId;
-    List<HomeGroupItem> childList;
+    public String Title;
+    public String Query;
+    public int ImageID;
+    public List<HomeGroupItem> ChildList;
 
-    public HomeGroupItem(int imageId, String text, List<HomeGroupItem> childList) {
-        super();
-        this.text = text;
-        this.imageId = imageId;
-        this.childList = childList;
+    public HomeGroupItem(int ImageID, String Title) {
+        this.Title = Title;
+        this.ImageID = ImageID;
     }
 
-    public HomeGroupItem(int imageId, String text) {
-        super();
-        this.text = text;
-        this.imageId = imageId;
-        this.childList = null;
+    public HomeGroupItem(int ImageID, String Title, String Query) {
+        this.Title = Title;
+        this.ImageID = ImageID;
+        this.Query = Query;
     }
 
-
-    public String getText() {
-        return text;
+    public HomeGroupItem(int ImageID, String Title, List<HomeGroupItem> ChildList) {
+        this.Title = Title;
+        this.ImageID = ImageID;
+        this.ChildList = ChildList;
     }
 
-    public int getImageId() {
-        return imageId;
+    public HomeGroupItem(String Title, int ImageID) {
+        this.Title = Title;
+        this.ImageID = ImageID;
+        this.ChildList = null;
     }
-
-    public List<HomeGroupItem> getChildList() {
-        return childList;
-    }
-
-
-
 }

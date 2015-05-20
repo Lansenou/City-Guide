@@ -19,7 +19,7 @@
             android:layout_height="60dp"
             android:layout_margin="5dp"
             android:layout_centerVertical="true"
-            android:background="@drawable/ic_launcher" />
+            android:background="@drawable/no_image" />
 
         <TextView
             android:id="@+id/textView"
@@ -37,4 +37,4 @@
         <!--android:layout_height="1px"-->
         <!--android:background="@color/divider" />-->
 
-</LinearLayout><!-- From: file:/C:/Users/Mustafa/Documents/CityGuide/mobile/src/main/res/layout/child_row.xml -->
+</LinearLayout><!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/mobile/src/main/res/layout/child_row.xml -->

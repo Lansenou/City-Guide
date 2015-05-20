@@ -7,4 +7,4 @@
         android:layout_height="wrap_content" android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" android:text="@string/hello_round" />
 </RelativeLayout>
-<!-- From: file:/C:/Users/Mustafa/Documents/CityGuide/wear/src/main/res/layout/round_activity_main.xml -->
+<!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/wear/src/main/res/layout/round_activity_main.xml -->

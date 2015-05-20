@@ -14,8 +14,17 @@
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@android:color/white"
         android:choiceMode="singleChoice"
-        android:listSelector="@drawable/drawer_list_selector"
-        android:background="@android:color/white"/>
+        android:listSelector="@drawable/drawer_list_selector" />
+
+    <!--fragment android:name="com.hva.group8.cityguide.TabHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tab_host"
+        android
+        >
+
+    </fragment-->
 
 </android.support.v4.widget.DrawerLayout>

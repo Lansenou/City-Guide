@@ -1,15 +1,12 @@
 package com.hva.group8.cityguide;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,15 +17,14 @@ public class TabPageIndicatorAdapter extends FragmentStatePagerAdapter {
     private static final String[] tabTitles = new String[] {"Home", "Route", "Start"};
     private Fragment homeFragment;
     private Map<Integer,Fragment> fragmentMap = new HashMap<Integer,Fragment>();
-    private final FragmentManager mFragmentManager;
 
     public TabPageIndicatorAdapter(FragmentManager fm) {
         super(fm);
-        mFragmentManager = fm;
     }
 
     public void replaceHomeFragment(Fragment fragment) {
         homeFragment = fragment;
+        //notifyDataSetChanged();
     }
 
     @Override

@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.lang.Override;
 import java.util.List;
 
 public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
@@ -19,13 +18,11 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
     List<DrawerItem> drawerItemList;
     int layoutResID;
 
-    public CustomDrawerAdapter(Context context, int layoutResourceID,
-                               List<DrawerItem> listItems) {
+    public CustomDrawerAdapter(Context context, int layoutResourceID, List<DrawerItem> listItems) {
         super(context, layoutResourceID, listItems);
         this.context = context;
         this.drawerItemList = listItems;
         this.layoutResID = layoutResourceID;
-
     }
 
     @Override
@@ -40,26 +37,22 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
             drawerHolder = new DrawerItemHolder();
 
             view = inflater.inflate(layoutResID, parent, false);
-            drawerHolder.ItemName = (TextView) view
-                    .findViewById(R.id.drawer_itemName);
+            drawerHolder.ItemName = (TextView) view.findViewById(R.id.drawer_itemName);
             drawerHolder.icon = (ImageView) view.findViewById(R.id.drawer_icon);
 
-            drawerHolder.itemLayout = (LinearLayout) view
-                    .findViewById(R.id.itemLayout);
+            drawerHolder.itemLayout = (LinearLayout) view.findViewById(R.id.itemLayout);
 
             view.setTag(drawerHolder);
 
         } else {
             drawerHolder = (DrawerItemHolder) view.getTag();
-
         }
 
         DrawerItem dItem = (DrawerItem) this.drawerItemList.get(position);
 
         drawerHolder.itemLayout.setVisibility(LinearLayout.VISIBLE);
 
-        drawerHolder.icon.setImageDrawable(view.getResources().getDrawable(
-                dItem.getImgResID()));
+        drawerHolder.icon.setImageDrawable(view.getResources().getDrawable(dItem.getImgResID()));
         drawerHolder.ItemName.setText(dItem.getItemName());
 
         return view;
@@ -68,6 +61,6 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
     private static class DrawerItemHolder {
         TextView ItemName;
         ImageView icon;
-        LinearLayout  itemLayout;
+        LinearLayout itemLayout;
     }
 }

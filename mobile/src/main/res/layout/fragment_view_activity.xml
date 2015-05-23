@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/linear"
+        android:background="@color/red">
+
+        <TextView
+            android:id="@+id/distanceText"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|top"
+            android:layout_marginLeft="10dp"
+            android:text="Distance"
+            android:textColor="@color/lighter_gray"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/EstTimeTxt"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:text="Travel Time"
+            android:textColor="@color/lighter_gray"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/urlTxt"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="10dp"
+            android:gravity="end"
+            android:linksClickable="true"
+            android:text="Website Link"
+            android:textColor="@color/lighter_gray"
+            android:textColorLink="@color/lighter_gray"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/OpeningstijdTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|bottom"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:autoLink="web"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="Opening Times"
+            android:textColor="@color/lighter_gray"
+            android:textSize="16sp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"/>
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/frameLayout">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/infoTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/titelTxt"
+                android:autoLink="web"
+                android:linksClickable="true"
+                android:text="Summary!"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/titelTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:text="Title"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

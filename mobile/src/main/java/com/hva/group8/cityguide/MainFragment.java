@@ -12,30 +12,27 @@ import android.view.ViewGroup;
 import com.viewpagerindicator.TabPageIndicator;
 
 public class MainFragment extends Fragment {
-    private static MainFragment instance = null;
+
+    public static MainFragment instance;
+
+    public static MainFragment getInstance() {
+        if (instance == null)
+            instance = new MainFragment();
+        return instance;
+    }
+
+    public static MainFragment newInstance() {
+        return (instance = new MainFragment());
+    }
+
     private ViewPager mPager;
     private TabPageIndicator mTabPageIndicator;
     private TabPageIndicatorAdapter mTabPageIndicatorAdapter;
     private View view;
 
-    public MainFragment() {
-    }
-
-    public static MainFragment getInstance() {
-        if (instance == null) {
-            instance = new MainFragment();
-        }
-        return instance;
-    }
-
-    public static MainFragment newInstance() {
-        instance = new MainFragment();
-        return instance;
-    }
-
     public TabPageIndicatorAdapter getTabPageIndicatorAdapter() {
         if (mTabPageIndicatorAdapter == null) {
-            mTabPageIndicatorAdapter = new TabPageIndicatorAdapter(getFragmentManager());
+            mTabPageIndicatorAdapter = new TabPageIndicatorAdapter(getFragmentManager(), (MainActivity) getActivity());
         }
         if (mTabPageIndicator == null)
             Log.e("Main Fragment", "mTabPageIndicator was null");
@@ -44,26 +41,58 @@ public class MainFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
+        Log.e("Created Main", "Fragment");
         view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        //Get from
-        mTabPageIndicator = (TabPageIndicator) view.findViewById(R.id.indicator);
+        // Get a reference from the layout
         mPager = (ViewPager) view.findViewById(R.id.pager);
+        mTabPageIndicator = (TabPageIndicator) view.findViewById(R.id.indicator);
 
-        //Needs to be in this order to make sure the pager has an adapter
+        // Attach adapter to ViewPager
         mPager.setAdapter(getTabPageIndicatorAdapter());
-        mTabPageIndicator.setViewPager(mPager);
 
-        Log.e("Adapter is null", (mTabPageIndicator == null) + "");
-        Log.e("idk", "test");
+        // Attach ViewPager to the indicator
+        mTabPageIndicator.setViewPager(mPager, 0);
+
         return view;
     }
 
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
+        super.onDestroy();
         instance = null;
         //mTabPageIndicatorAdapter.removeAll();
+    }
+
+    public boolean onBackPressed() {
+        if (mPager.getCurrentItem() == 0) {
+            //Home Tab
+
+            CustomFragment currentFragment = ((CustomFragment) getTabPageIndicatorAdapter().getItem(0));
+            Fragment parent = currentFragment.parent;
+            if (parent != null) {
+                //Set it to parent if it has one
+                ((MainActivity) getActivity()).SwitchFragment(parent, false, 0);
+                return true;
+            }
+            //Check if it fragment is home
+            if (!getTabPageIndicatorAdapter().getItem(0).toString().contains("HomeFragment"))
+                ((MainActivity) getActivity()).SwitchFragment(HomeFragment.newInstance(), false, 0);
+            //Close Activity
+            else getActivity().finish();
+
+        } else if (mPager.getCurrentItem() == 1) {
+            //Route Tab
+            //Check if it fragment is route
+            if (!getTabPageIndicatorAdapter().getItem(1).toString().contains("RouteFragment"))
+                ((MainActivity) getActivity()).SwitchFragment(RouteFragment.newInstance(), false, 1);
+            //Set it to Tab to Home
+            else mPager.setCurrentItem(0);
+            return true;
+        } else if (mPager.getCurrentItem() == 2) {
+            mPager.setCurrentItem(1);
+            return true;
+        }
+        return false;
     }
 }

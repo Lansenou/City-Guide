@@ -7,4 +7,4 @@
     app:rectLayout="@layout/rect_activity_main" app:roundLayout="@layout/round_activity_main"
     tools:context=".MainActivity"
     tools:deviceIds="wear"></android.support.wearable.view.WatchViewStub>
-<!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/wear/src/main/res/layout/activity_main.xml -->
+<!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/wear/src/main/res/layout/activity_main.xml -->

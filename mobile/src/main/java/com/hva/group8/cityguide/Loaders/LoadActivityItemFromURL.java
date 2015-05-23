@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import com.hva.group8.cityguide.ActivityItem;
 import com.hva.group8.cityguide.ActivityListAdapter;
-import com.hva.group8.cityguide.R;
 import com.hva.group8.cityguide.Managers.UserInfo;
+import com.hva.group8.cityguide.R;
 
 import org.apache.http.NameValuePair;
 import org.json.JSONArray;
@@ -26,12 +26,12 @@ import java.util.List;
  */
 public class LoadActivityItemFromURL extends AsyncTask<ArrayList<NameValuePair>, List<ActivityItem>, List<ActivityItem>> {
 
-        ProgressDialog dialog;
-        boolean hasPrepared = false;
-        private ActivityListAdapter adpt;
-        private ArrayList<NameValuePair> nameValuePairs;
-        private Context context;
-        private String url;
+    ProgressDialog dialog;
+    boolean hasPrepared = false;
+    private ActivityListAdapter adpt;
+    private ArrayList<NameValuePair> nameValuePairs;
+    private Context context;
+    private String url;
 
     public LoadActivityItemFromURL(ActivityListAdapter adpt, ArrayList<NameValuePair> nameValuePairs, Context context, String url) {
         this.adpt = adpt;
@@ -49,9 +49,11 @@ public class LoadActivityItemFromURL extends AsyncTask<ArrayList<NameValuePair>,
     public LoadActivityItemFromURL dialog(Activity activity) {
         super.onPreExecute();
         dialog = new ProgressDialog(activity);
+        dialog.setMessage(context.getString(R.string.action_loading));
+        dialog.setTitle(context.getString(R.string.action_loading_title));
         dialog.setIndeterminate(false);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.setCancelable(true);
+        dialog.setCancelable(false);
         dialog.show();
         return this;
     }

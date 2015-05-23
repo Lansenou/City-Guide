@@ -18,12 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ActivityListFragment extends Fragment {
+public class ActivityListFragment extends CustomFragment {
 
-    private static ActivityListFragment instance;
-    HomeGroupItem info;
-    String tableName;
-    List<ActivityItem> itemList = new ArrayList<>();
+    public static ActivityListFragment instance;
 
     public static ActivityListFragment getInstance() {
         if (instance == null)
@@ -34,6 +31,10 @@ public class ActivityListFragment extends Fragment {
     public static ActivityListFragment newInstance() {
         return (instance = new ActivityListFragment());
     }
+
+    HomeGroupItem info;
+    String tableName;
+    List<ActivityItem> itemList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,20 +48,44 @@ public class ActivityListFragment extends Fragment {
         nameValuePairs.add(new BasicNameValuePair("query", info.Query));
         Log.e("Query", info.Query + ", Tablename: " + tableName);
 
-        //Add adapter
-        ActivityListAdapter adapter = new ActivityListAdapter(getActivity().getApplicationContext(), 0, itemList);
-        LoadActivityItemFromURL async = new LoadActivityItemFromURL(adapter, nameValuePairs, getActivity().getApplicationContext(), "http://www.lansenou.com/database/ophalen.php");
-        async.dialog(getActivity()).execute();
+        if (itemList == null || itemList.size() == 0) {
+            itemList = new ArrayList<>();
 
-        //Set adapter to our list
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //putExtra("activity", itemList.get(position));
-            }
-        });
+            //Add adapter
+            ActivityListAdapter adapter = new ActivityListAdapter(getActivity().getApplicationContext(), 0, itemList);
 
+            //Load items into the list
+            LoadActivityItemFromURL async = new LoadActivityItemFromURL(adapter, nameValuePairs, getActivity().getApplicationContext(), "http://www.lansenou.com/database/ophalen.php");
+            async.dialog(getActivity()).execute();
+
+            //Set adapter to our list
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    //putExtra("activity", itemList.get(position));
+                    ViewActivityFragment fragment = ViewActivityFragment.getInstance();
+                    fragment.myItem = itemList.get(position);
+                    fragment.parent = getInstance();
+                    ((MainActivity) getActivity()).SwitchFragment(fragment, false, 0);
+                }
+            });
+        } else {
+            //Add adapter
+            ActivityListAdapter adapter = new ActivityListAdapter(getActivity().getApplicationContext(), 0, itemList);
+
+            //Set adapter to our list
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    //putExtra("activity", itemList.get(position));
+                    ViewActivityFragment fragment = ViewActivityFragment.newInstance();
+                    fragment.myItem = itemList.get(position);
+                    ((MainActivity) getActivity()).SwitchFragment(fragment, false, 0);
+                }
+            });
+        }
         return view;
     }
 
@@ -68,6 +93,5 @@ public class ActivityListFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         itemList.clear();
-        //mTabPageIndicatorAdapter.removeAll();
     }
 }

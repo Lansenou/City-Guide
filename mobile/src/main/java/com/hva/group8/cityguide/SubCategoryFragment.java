@@ -1,21 +1,19 @@
 package com.hva.group8.cityguide;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class SubCategoryFragment extends Fragment {
+public class SubCategoryFragment extends SearchActivityFragment {
 
-    private static SubCategoryFragment instance;
+    public static SubCategoryFragment instance;
 
     public static SubCategoryFragment getInstance() {
         if (instance == null)
@@ -29,13 +27,12 @@ public class SubCategoryFragment extends Fragment {
 
     public String tableName;
     public int number;
-
     private List<HomeGroupItem> categoryList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
-        final ListView listView = (ListView)view.findViewById(R.id.listView);
+        final ListView listView = (ListView) view.findViewById(R.id.listView);
         listView.setDividerHeight(2);
 
         //Load List
@@ -55,9 +52,13 @@ public class SubCategoryFragment extends Fragment {
                 ActivityListFragment fragment = ActivityListFragment.getInstance();
                 fragment.info = categoryList.get(position);
                 fragment.tableName = tableName;
-                ((MainActivity)getActivity()).SwitchFragment(fragment);
+                fragment.parent = newInstance();
+                ((MainActivity) getActivity()).SwitchFragment(fragment, false, 0);
             }
         });
+
+        setupSearch(view);
+        viewList.add(listView);
         return view;
     }
 

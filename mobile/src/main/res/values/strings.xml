@@ -18,11 +18,14 @@
     <string name="action_currentlocation">Your current location..</string>
     <string name="action_addlocation">Add a new location!</string>
     <string name="action_search">Search a location!</string>
+    <string name="action_loading_title">Loading!</string>
+    <string name="action_loading">Hold on, loading!</string>
 
     <!-- Toast Messages -->
     <string name="toast_added">Added the item: </string>
     <string name="toast_found">Found Items: </string>
     <string name="toast_full">List hit the 8 limit</string>
+    <string name="toast_removed">Removed the item</string>
 
     <!-- Android Errors -->
     <string name="gps_not_found">We didn\'t find a gps location.

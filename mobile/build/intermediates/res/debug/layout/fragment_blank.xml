@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lighter_gray"
     tools:context="com.hva.group8.cityguide.BlankFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,4 +13,4 @@
         android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>
-<!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/mobile/src/main/res/layout/fragment_blank.xml -->
+<!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/mobile/src/main/res/layout/fragment_blank.xml -->

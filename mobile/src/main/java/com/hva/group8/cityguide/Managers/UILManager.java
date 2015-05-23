@@ -3,13 +3,12 @@ package com.hva.group8.cityguide.Managers;
 import android.content.Context;
 import android.graphics.Bitmap;
 
+import com.hva.group8.cityguide.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
-
-import com.hva.group8.cityguide.R;
 
 /**
  * Created by Lansenou on 19-5-2015.
@@ -48,7 +47,7 @@ public class UILManager {
         return ImageLoader.getInstance();
     }
 
-    public DisplayImageOptions getRoundImage() {
+    public static DisplayImageOptions getRoundImage() {
         return new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
@@ -61,7 +60,7 @@ public class UILManager {
                 .build();                                       //Build the Image Config
     }
 
-    public DisplayImageOptions getNormalImage() {
+    public static DisplayImageOptions getNormalImage() {
         //Display Configuration
         return new DisplayImageOptions.Builder()
                 .cacheInMemory(true)

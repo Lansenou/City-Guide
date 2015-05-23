@@ -1,13 +1,15 @@
 package com.hva.group8.cityguide;
 
+
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,17 +21,33 @@ import com.hva.group8.cityguide.Managers.UserInfo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 
 public class MainActivity extends ActionBarActivity {
 
+    //Navigation Drawer
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-    private ActionBarDrawerToggle mDrawerToggle;
+    public ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private CustomDrawerAdapter mDrawerAdapter;
     private List<DrawerItem> mDrawerItems = new ArrayList<DrawerItem>();
+    private ViewPager pager;
+
+    private MainFragment mainFragment;
+
+    //Fragment History
+    Stack<Integer> pageHistory;
+
+    private static MainActivity instance;
+
+    public static MainActivity getInstance() {
+        if (instance == null)
+            instance = new MainActivity();
+        return instance;
+    }
 
 
     @Override
@@ -38,6 +56,19 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         UserInfo.getInstance().instantiate(getApplicationContext());
+        setupNavigationDrawer();
+
+        instance = this;
+
+        mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.tab_host);
+        pager = (ViewPager) mainFragment.getView().findViewById(R.id.pager);
+        if (pager == null) {
+            Log.i("Pager was", "null!");
+        }
+    }
+
+    void setupNavigationDrawer() {
+        //Hamburger Menu / Back Arrow
 
         //Nav Drawer
         mTitle = mDrawerTitle = getTitle();
@@ -57,44 +88,62 @@ public class MainActivity extends ActionBarActivity {
         mDrawerList.setAdapter(mDrawerAdapter);
 
         //Nav Drawer Click Listener
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SelectItem(position);
+            }
+        });
 
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+        //Navigation Drawer Toggle
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
             public void onDrawerClosed(View view) {
+                //Close
+                super.onDrawerClosed(view);
                 getSupportActionBar().setTitle(mTitle);
                 invalidateOptionsMenu();
             }
+
             public void onDrawerOpened(View drawerView) {
+                //Open
+                super.onDrawerOpened(drawerView);
                 getSupportActionBar().setTitle(mDrawerTitle);
                 invalidateOptionsMenu();
             }
         };
+
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        if (savedInstanceState == null) {//Default selected item=0
-            SelectItem(0);
-        }
+        //Toolbar icon
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
-    public void SwitchFragment(Fragment fragment, int navBarPos) {
+
+    //Switch Fragments
+    private void SwitchFragment(Fragment fragment, int navBarPos, int pagerPage) {
         mDrawerList.setItemChecked(navBarPos, true);
         setTitle(mDrawerItems.get(navBarPos).getItemName());
-        SwitchFragment(fragment);
+        SwitchFragment(fragment, true, pagerPage);
     }
 
-    public void SwitchFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        //MainFragment.getInstance().getTabPageIndicatorAdapter().replaceHomeFragment(fragment);
-
-        //Add to fragment manager
-        // if (!fragment.isAdded())
-        //     transaction.add(R.id.content_frame, fragment, fragment.getTag());
-
-
-        transaction.replace(R.id.content_frame, fragment);
-        transaction.commit();
+    public void SwitchFragment(Fragment fragment, boolean showNavDrawer, int pagerPage) {
+        //Change with the pager
+        pager.setCurrentItem(pagerPage);
+        switch (pagerPage) {
+            case 0: //Home
+                ((TabPageIndicatorAdapter) pager.getAdapter()).ReplaceHomeFragment(fragment);
+                break;
+            case 1: //Route
+                ((TabPageIndicatorAdapter) pager.getAdapter()).ReplaceRouteFragment(fragment);
+                break;
+            default:
+                ((TabPageIndicatorAdapter) pager.getAdapter()).ReplaceHomeFragment(fragment);
+                break;
+        }
+        //mDrawerToggle.setDrawerIndicatorEnabled(showNavDrawer);
+        Log.e("Switching Fragment", "To " + fragment.toString());
     }
 
     @Override
@@ -103,26 +152,21 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
+    //Called by navigation Drawer
     public void SelectItem(int position) {
-        Fragment fragment;
+        mDrawerLayout.closeDrawer(mDrawerList);
         switch (position) {
-            case 0:
-                fragment = MainFragment.newInstance();
+            case 0: //Home
+                SwitchFragment(HomeFragment.newInstance(), position, 0);
                 break;
-//            case 1:
-//                fragment = BlankFragment.newInstance();
-//                //Bundle args = new Bundle();
-//            \    //args.putString("text", "This is Drawer item1");
-//                //fragment.setArguments(args);
-//                break;
+            case 1: //Route
+                SwitchFragment(RouteFragment.newInstance(), position, 1);
+                break;
             default:
-                fragment = BlankFragment.newInstance();
+                SwitchFragment(BlankFragment.newInstance(), position, 0);
                 break;
         }
-        SwitchFragment(fragment, position);
-        mDrawerLayout.closeDrawer(mDrawerList);
     }
-
 
     @Override
     public void setTitle(CharSequence title) {
@@ -144,27 +188,25 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-       return mDrawerToggle.onOptionsItemSelected(item);
+        int id = item.getItemId();
+        if (mDrawerToggle.isDrawerIndicatorEnabled() && mDrawerToggle.onOptionsItemSelected(item))
+            return true;
+        else if (id == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
     @Override
     public void onBackPressed() {
-        if(mDrawerLayout.isDrawerOpen(Gravity.START))
+        if (mDrawerLayout.isDrawerOpen(Gravity.START))
             mDrawerLayout.closeDrawer(Gravity.START);
         else {
-            getSupportFragmentManager().popBackStack();
-            //finish();
-            //overridePendingTransition( 0, 0);
-            //startActivity(getIntent());
-            //overridePendingTransition(0, 0);
-        }
-    }
-
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            SelectItem(position);
+            Log.i("Pressed:", "Back (Button)");
+            if (!mainFragment.onBackPressed())
+                getSupportFragmentManager().popBackStack();
         }
     }
 }

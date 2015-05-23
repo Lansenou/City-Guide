@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App info -->
+    <string name="app_name">City Guide</string>
+
+    <!-- Navigation Drawer -->
+    <string name="title_section1">Home</string>
+    <string name="title_section2">Route</string>
+    <string name="title_section3">Start</string>
+
+    <!-- Android Actions -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Instellingen</string>
+    <string name="action_add">Voeg toe!</string>
+    <string name="action_website">Website hier!</string>
+
+    <!-- Toast Messages -->
+    <string name="toast_added">Het volgende item is toegevoegd:
+    </string>
+    <string name="toast_found">Gevonden activiteiten: </string>
+
+    <!-- Android Errors -->
+    <string name="gps_not_found">Wij hebben geen GPS locatie kunnen vinden.
+    Nu nemen wij het middelpunt van Amsterdam als locatie.</string>
+
+    <!-- Activity Names -->
+    <string name="title_activity_sub_category">Subcategorieën</string>
+    <string name="title_activity_view_activities">Kies een activiteit</string>
+    <string name="title_activity_view">Bekijk de activiteit</string>
+    <string name="title_activity_test_search_view">Zoek een bestemming</string>
+    <string name="title_activity_route">Route</string>
+    <string name="title_activity_category_list">Categorie</string>
+
+    <string name="category">Categorie</string>
+    <string name="nearby">Dichtbij</string>
+    <string name="top10">Top 10 locaties</string>
+
+    <!-- (Sub) Category Names -->
+    <!-- Activities -->
+    <string name="cat_activities">Activiteiten</string>
+    <string name="sub_arrangement">Arrangement</string>
+    <string name="sub_excercion">Excursie</string>
+    <string name="sub_guidedtour">Rondleiding</string>
+
+    <!-- Attractions -->
+    <string name="cat_attractions">Attracties</string>
+    <string name="sub_architecture">Architectuur</string>
+    <string name="sub_attraction">Attractie</string>
+    <string name="sub_outside">Open lucht</string>
+    <string name="sub_wellness">Wellness</string>
+    <string name="sub_museums">Museum</string>
+
+    <!-- Food and Drinks -->
+    <string name="cat_foodandrinks">Eten en drinken</string>
+    <string name="sub_brasserie">Brasserie</string>
+    <string name="sub_eatery">Eetcafe</string>
+    <string name="sub_restaurant">Restaurant</string>
+
+    <!-- Gallery -->
+    <string name="cat_museum">Museum and gallerijen</string>
+    <string name="sub_gallery">Gallerij</string>
+    <string name="sub_exhibition">Tentoonstelling</string>
+
+    <!-- Cabaret -->
+    <string name="cat_cabaret">Show</string>
+    <string name="sub_youththeater">Theater voor de jeugd</string>
+    <string name="sub_theater">Theater</string>
+    <string name="sub_dance">Dans en muziek</string>
+
+    <!-- Nightlife -->
+    <string name="cat_night">Uitgaan</string>
+    <string name="sub_cafe">Cafe</string>
+    <string name="sub_nightclub">Club</string>
+
+    <!-- Settings Screen -->
+
+    <string-array name="languages">
+        <item></item>
+        <item>English</item>
+        <item>Dutch</item>
+    </string-array>
+
+    <string name="settings_notifications">Notifcaties</string>
+    <string name="settings_notifications_hint">Zet Smartwatch notifcaties aan/uit!</string>
+
+    <string name="settings_travel">Reis Methode</string>
+    <string name="settings_travel_hint">Verander uw reis methode!</string>
+
+    <string-array name="travel">
+        <item></item>
+        <item>Te voet</item>
+        <item>Openbaar vervoer</item>
+        <item>Auto</item>
+    </string-array>
+
+    <string name="settings_time">Tijd over</string>
+    <string name="settings_time_hint">Koop meer tijd!</string>
+
+    <string-array name="time">
+        <item></item>
+        <item>1 dag</item>
+        <item>2 dagen</item>
+        <item>3 dagen</item>
+        <item>4 dagen</item>
+        <item>5 dagen</item>
+        <item>6 dagen</item>
+        <item>1 week</item>
+    </string-array>
+    <string name="action_addlocation">Voeg een nieuwe locatie toe!</string>
+    <string name="action_currentlocation">Uw huidige locatie.</string>
+    <string name="hold_add">Voeg een locatie toe!</string>
+    <string name="hold_current">Dit is waar u zich op dit moment bevindt.</string>
+    <string name="title_activity_settings">Instellingen</string>
+    <string name="hello_world">Hallo wereld.</string>
+    <string name="action_search">Zoek een locatie..</string>
+    <string name="user_location">Uw locatie!</string>
+    <string name="action_route">Wissel weergave!</string>
+    <string name="title_activity_maps">Kaart</string>
+    <string name="toast_full">Lijst heeft limit van 8 bereikt</string>
+
+    <!-- Context Menu -->
+    <string-array name="hold_current">
+        <item>Terug</item>
+    </string-array>
+
+    <string-array name="hold_location">
+        <item>Verwijder locatie</item>
+        <item>Bekijk locatie</item>
+    </string-array>
+
+    <string-array name="hold_add">
+        <item>Voeg locatie toe</item>
+    </string-array>
+
+</resources>

@@ -1,5 +1,6 @@
 package com.hva.group8.cityguide;
 
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +24,11 @@ public class CustomHomeListAdapter extends BaseExpandableListAdapter {
     private int lastExpandedPosition = -1;
     private ExpandableListView listView;
 
-    public CustomHomeListAdapter(List<HomeGroupItem> grList, ExpandableListView listView) {
+    public CustomHomeListAdapter(List<HomeGroupItem> grList, ExpandableListView listView, MainActivity act, LayoutInflater mInflater) {
         this.groupItem = grList;
         this.listView = listView;
-    }
-
-    public void setInflater(LayoutInflater mInflater, MainActivity act) {
-        this.mInflater = mInflater;
         this.activity = act;
+        this.mInflater = mInflater;
     }
 
 
@@ -93,7 +91,10 @@ public class CustomHomeListAdapter extends BaseExpandableListAdapter {
     @Override
     public void onGroupExpanded(int groupPosition) {
         if (groupPosition == 0) {
-            activity.SwitchFragment(CategoryFragment.newInstance());
+            CategoryFragment fragment = CategoryFragment.newInstance();
+            fragment.parent = HomeFragment.getInstance();
+            activity.SwitchFragment(fragment, false, 0);
+            listView.collapseGroup(0);
         } else {
             if (lastExpandedPosition != -1 && groupPosition != lastExpandedPosition) {
                 listView.collapseGroup(lastExpandedPosition);

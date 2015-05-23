@@ -2,7 +2,6 @@ package com.hva.group8.cityguide;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,39 +11,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class HomeFragment extends Fragment {
-    ExpandableListView mExpendableListView;
-    List<HomeGroupItem> groupItems = new ArrayList<HomeGroupItem>();
+public class HomeFragment extends SearchActivityFragment {
 
-    public static HomeFragment newInstance() {
-        HomeFragment f = new HomeFragment();
-        return f;
+    public static HomeFragment instance;
+
+    public static HomeFragment getInstance() {
+        if (instance == null)
+            instance = new HomeFragment();
+        return instance;
     }
 
+    public static HomeFragment newInstance() {
+        return (instance = new HomeFragment());
+    }
+
+    ExpandableListView mExpendableListView;
+    List<HomeGroupItem> groupItems = new ArrayList<>();
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        mExpendableListView = (ExpandableListView)view.findViewById(R.id.expandableListView);
+        //Setup ExpandableListView View
+        mExpendableListView = (ExpandableListView) view.findViewById(R.id.expandableListView);
         mExpendableListView.setDividerHeight(2);
         mExpendableListView.setGroupIndicator(null);
         mExpendableListView.setClickable(true);
         setGroupData();
 
-        CustomHomeListAdapter homeListAdapter = new CustomHomeListAdapter(groupItems, mExpendableListView);
-        homeListAdapter
-                .setInflater(
-                        (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE),
-                        (MainActivity) getActivity());
+        //Create Adapter
+        CustomHomeListAdapter homeListAdapter = new CustomHomeListAdapter(groupItems, mExpendableListView,
+                (MainActivity) getActivity(),
+                (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE));
 
+        //Set adapter
         mExpendableListView.setAdapter(homeListAdapter);
+
+        //Setup SearchActivityFragment
+        setupSearch(view);
+        viewList.add(mExpendableListView);
         return view;
     }
 
     public void setGroupData() {
-        List<HomeGroupItem> a = new ArrayList<HomeGroupItem>();
-        List<HomeGroupItem> b = new ArrayList<HomeGroupItem>();
+        List<HomeGroupItem> a = new ArrayList<>();
+        List<HomeGroupItem> b = new ArrayList<>();
         groupItems.add(new HomeGroupItem(R.drawable.categories, "Categories"));
         a.add(new HomeGroupItem(R.drawable.no_image, "test2"));
         groupItems.add(new HomeGroupItem(R.drawable.cat_top10, "Top 10 locations", a));
@@ -56,16 +67,5 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         groupItems.clear();
-        //mTabPageIndicatorAdapter.removeAll();
     }
-
-//On viewdestroy delete listview data ofs?
-//    @Override
-//    public boolean onChildClick(ExpandableListView parent, View v,
-//                                int groupPosition, int childPosition, long id) {
-//        Toast.makeText(getActivity(), "Clicked On Child",
-//                Toast.LENGTH_SHORT).show();
-//        return true;
-//    }
-
 }

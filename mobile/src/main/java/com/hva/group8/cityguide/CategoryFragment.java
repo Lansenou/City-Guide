@@ -1,6 +1,13 @@
+/*
+ * Copyright (c) 2015.
+ * Created by Lansenou on 19-5-2015.
+ *
+ */
+
 package com.hva.group8.cityguide;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CategoryFragment extends MainFragment {
-    private static CategoryFragment instance;
-    private List<HomeGroupItem> itemList;
+public class CategoryFragment extends SearchActivityFragment {
+
+    public static CategoryFragment instance;
 
     public static CategoryFragment getInstance() {
         if (instance == null)
@@ -25,11 +32,12 @@ public class CategoryFragment extends MainFragment {
         return (instance = new CategoryFragment());
     }
 
+    private List<HomeGroupItem> itemList;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_category, container, false);
-        ListView listView = (ListView)view.findViewById(R.id.listView);
+        ListView listView = (ListView) view.findViewById(R.id.listView);
         listView.setDividerHeight(2);
 
         //Load List
@@ -44,11 +52,15 @@ public class CategoryFragment extends MainFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Toast.makeText(getActivity().getApplicationContext(), itemList.get(position).Title, Toast.LENGTH_SHORT).show();
-                SubCategoryFragment fragment = SubCategoryFragment.getInstance();
+                SubCategoryFragment fragment = SubCategoryFragment.newInstance();
                 fragment.number = position;
-                ((MainActivity) getActivity()).SwitchFragment(fragment);
+                fragment.parent = getInstance();
+                ((MainActivity) getActivity()).SwitchFragment(fragment, false, 0);
             }
         });
+
+        setupSearch(view);
+        viewList.add(listView);
         return view;
     }
 

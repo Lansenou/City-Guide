@@ -2,6 +2,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>
         <item name="android:windowIsTranslucent">true</item>
+        <item name="actionBarTheme">@style/MyApp.ActionBarTheme</item>
 
         <!-- colorPrimary is used, for instance, for the default ActionBar
        (but not Toolbar) background.
@@ -22,6 +23,12 @@
 
     <style name="ActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
         <item name="titleTextStyle">@style/TitleTextStyle</item>
+        <item name="android:background">@color/lighter_gray</item>
+    </style>
+
+    <style name="MyApp.ActionBarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <!-- THIS is where you can color the arrow! -->
+        <item name="colorControlNormal">@color/lighter_gray</item>
     </style>
 
     <style name="TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">

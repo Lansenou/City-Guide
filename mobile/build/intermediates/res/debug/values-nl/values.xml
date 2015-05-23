@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/mobile/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-nl/values.xml -->
+    <!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/mobile/src/main/res/values-nl/strings.xml -->
+    <eat-comment/>
+    <string-array name="hold_add">
+        <item>Voeg locatie toe</item>
+    </string-array>
+    <string-array name="hold_current">
+        <item>Terug</item>
+    </string-array>
+    <string-array name="hold_location">
+        <item>Verwijder locatie</item>
+        <item>Bekijk locatie</item>
+    </string-array>
+    <string-array name="languages">
+        <item/>
+        <item>English</item>
+        <item>Dutch</item>
+    </string-array>
+    <string-array name="time">
+        <item/>
+        <item>1 dag</item>
+        <item>2 dagen</item>
+        <item>3 dagen</item>
+        <item>4 dagen</item>
+        <item>5 dagen</item>
+        <item>6 dagen</item>
+        <item>1 week</item>
+    </string-array>
+    <string-array name="travel">
+        <item/>
+        <item>Te voet</item>
+        <item>Openbaar vervoer</item>
+        <item>Auto</item>
+    </string-array>
+    <!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/mobile/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/res/values-nl/values.xml -->
     <eat-comment/>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Navigeren naar startpositie"</string>
-    <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
-    <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s, %3$s"</string>
     <string msgid="1594238315039666878" name="abc_action_bar_up_description">"Omhoog navigeren"</string>
     <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"Meer opties"</string>
     <string msgid="4076576682505996667" name="abc_action_mode_done">"Gereed"</string>
@@ -17,8 +48,24 @@
     <string msgid="893419373245838918" name="abc_searchview_description_voice">"Gesproken zoekopdracht"</string>
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Delen met"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Delen met %s"</string>
-    <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Samenvouwen"</string>
-    <!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/mobile/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/res/values-nl/common_strings.xml -->
+    <!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/mobile/src/main/res/values-nl/strings.xml -->
+    <eat-comment/>
+    <string name="action_add">Voeg toe!</string>
+    <string name="action_addlocation">Voeg een nieuwe locatie toe!</string>
+    <string name="action_currentlocation">Uw huidige locatie.</string>
+    <string name="action_route">Wissel weergave!</string>
+    <string name="action_search">Zoek een locatie..</string>
+    <string name="action_settings">Instellingen</string>
+    <string name="action_website">Website hier!</string>
+    <string name="app_name">City Guide</string>
+    <string name="cat_activities">Activiteiten</string>
+    <string name="cat_attractions">Attracties</string>
+    <string name="cat_cabaret">Show</string>
+    <string name="cat_foodandrinks">Eten en drinken</string>
+    <string name="cat_museum">Museum and gallerijen</string>
+    <string name="cat_night">Uitgaan</string>
+    <string name="category">Categorie</string>
+    <!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/mobile/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/res/values-nl/common_strings.xml -->
     <eat-comment/>
     <string msgid="473679118463211576" name="common_android_wear_notification_needs_update_text">"Er is een update van de Android Wear-app vereist voor een bepaalde app."</string>
     <string msgid="3046420540094071256" name="common_android_wear_update_text">"Deze app wordt niet uitgevoerd, tenzij u de Android Wear-app updatet."</string>
@@ -51,4 +98,55 @@
     <string msgid="9071884888741449141" name="common_signin_button_text">"Inloggen"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"Inloggen met Google"</string>
     <string msgid="5000919058582214855" name="commono_google_play_services_api_unavailable_text">"Voor deze app zijn een of meer Google Play-services vereist die momenteel niet beschikbaar zijn. Neem contact op met de ontwikkelaar voor ondersteuning."</string>
+    <!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/mobile/src/main/res/values-nl/strings.xml -->
+    <eat-comment/>
+    <string name="gps_not_found">Wij hebben geen GPS locatie kunnen vinden.
+    Nu nemen wij het middelpunt van Amsterdam als locatie.</string>
+    <string name="hello_world">Hallo wereld.</string>
+    <string name="hold_add">Voeg een locatie toe!</string>
+    <string name="hold_current">Dit is waar u zich op dit moment bevindt.</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="nearby">Dichtbij</string>
+    <string name="settings_notifications">Notifcaties</string>
+    <string name="settings_notifications_hint">Zet Smartwatch notifcaties aan/uit!</string>
+    <string name="settings_time">Tijd over</string>
+    <string name="settings_time_hint">Koop meer tijd!</string>
+    <string name="settings_travel">Reis Methode</string>
+    <string name="settings_travel_hint">Verander uw reis methode!</string>
+    <string name="sub_architecture">Architectuur</string>
+    <string name="sub_arrangement">Arrangement</string>
+    <string name="sub_attraction">Attractie</string>
+    <string name="sub_brasserie">Brasserie</string>
+    <string name="sub_cafe">Cafe</string>
+    <string name="sub_dance">Dans en muziek</string>
+    <string name="sub_eatery">Eetcafe</string>
+    <string name="sub_excercion">Excursie</string>
+    <string name="sub_exhibition">Tentoonstelling</string>
+    <string name="sub_gallery">Gallerij</string>
+    <string name="sub_guidedtour">Rondleiding</string>
+    <string name="sub_museums">Museum</string>
+    <string name="sub_nightclub">Club</string>
+    <string name="sub_outside">Open lucht</string>
+    <string name="sub_restaurant">Restaurant</string>
+    <string name="sub_theater">Theater</string>
+    <string name="sub_wellness">Wellness</string>
+    <string name="sub_youththeater">Theater voor de jeugd</string>
+    <string name="title_activity_category_list">Categorie</string>
+    <string name="title_activity_maps">Kaart</string>
+    <string name="title_activity_route">Route</string>
+    <string name="title_activity_settings">Instellingen</string>
+    <string name="title_activity_sub_category">Subcategorieën</string>
+    <string name="title_activity_test_search_view">Zoek een bestemming</string>
+    <string name="title_activity_view">Bekijk de activiteit</string>
+    <string name="title_activity_view_activities">Kies een activiteit</string>
+    <string name="title_section1">Home</string>
+    <string name="title_section2">Route</string>
+    <string name="title_section3">Start</string>
+    <string name="toast_added">Het volgende item is toegevoegd:
+    </string>
+    <string name="toast_found">Gevonden activiteiten: </string>
+    <string name="toast_full">Lijst heeft limit van 8 bereikt</string>
+    <string name="top10">Top 10 locaties</string>
+    <string name="user_location">Uw locatie!</string>
 </resources>

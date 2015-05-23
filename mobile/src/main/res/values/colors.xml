@@ -6,6 +6,7 @@
     <color name="lighter_gray">#EBEBEB</color>
     <color name="divider">#D1D1D1</color>
     <color name="ListViewText">#000000</color>
+    <color name="transparent">#00000000</color>
 
 
 </resources>

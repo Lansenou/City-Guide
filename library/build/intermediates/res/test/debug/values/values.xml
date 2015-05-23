@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/library/build/intermediates/bundles/debug/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/library/build/intermediates/bundles/debug/res/values/values.xml -->
     <eat-comment/>
     <attr format="boolean" name="centered"/>
     <attr format="color" name="selectedColor"/>

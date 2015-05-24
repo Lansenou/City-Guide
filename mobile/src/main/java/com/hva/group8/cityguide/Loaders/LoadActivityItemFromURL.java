@@ -53,14 +53,18 @@ public class LoadActivityItemFromURL extends AsyncTask<ArrayList<NameValuePair>,
         dialog.setTitle(context.getString(R.string.action_loading_title));
         dialog.setIndeterminate(false);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
         dialog.show();
         return this;
     }
 
     @Override
     protected List<ActivityItem> doInBackground(ArrayList<NameValuePair>... params) {
-        Looper.prepare();
+        try {
+            Looper.prepare();
+        } catch (Exception e) {
+            Log.e("Looper", e.toString());
+        }
 
         String getActivity = DBConnect.Read(nameValuePairs, url);
         Log.e("Async Link", getActivity);
@@ -75,7 +79,11 @@ public class LoadActivityItemFromURL extends AsyncTask<ArrayList<NameValuePair>,
             e.printStackTrace();
         }
 
+        try {
         Looper.myLooper().quit();
+        } catch (Exception e) {
+            Log.e("Looper", e.toString());
+        }
         return null;
     }
 

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 import com.hva.group8.cityguide.ActivityItem;
 import com.hva.group8.cityguide.R;
+import com.hva.group8.cityguide.RouteFragment;
 
 import java.util.List;
 import java.util.Locale;
@@ -176,11 +177,11 @@ public class UserInfo implements LocationListener {
     public void updateLocationList() {
         List<ActivityItem> routeList = RouteManager.getInstance().routeList;
         for (int i = 0; i < routeList.size(); i++) { //Loop through our activity list and update them
-            ActivityItem temp = routeList.get(i);
-            temp.Distance = calculateDistance(temp.Longitude, temp.Latitude);
+            ActivityItem item = routeList.get(i);
+            item.Distance = calculateDistance(item.Longitude, item.Latitude);
 
             //Update List
-            //RouteActivity.getInstance().UpdateList();
+            RouteFragment.getInstance().UpdateList();
         }
     }
 

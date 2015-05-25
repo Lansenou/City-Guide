@@ -6,6 +6,7 @@
 
 package com.hva.group8.cityguide;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -19,6 +20,7 @@ import android.view.ViewGroup;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -70,20 +72,32 @@ public class MapsFragment extends Fragment {
             // Try to obtain the map from the SupportMapFragment.
             mMap = fragment.getMap();
             if (mMap != null)
-                // Check if we were successful in obtaining the map.
                 setUpMap();
+                // Check if we were successful in obtaining the map.
+                mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
+                    @Override
+                    public void onMyLocationChange(Location location) {
+                        setUpMap();
+                    }
+                });
         }
     }
 
     private void setUpMap() {
-        //Add your location to the map
-        LatLng ourLocation = userInfo.getLatLng();
-        mMap.addMarker(new MarkerOptions().position(ourLocation).title("You are here!"));
 
-        Log.e("Map first", mMap.getCameraPosition() + "");
+        //Clear map before drawing
+        mMap.clear();
+
+        //Get our location
+        LatLng ourLocation = userInfo.getLatLng();
+
+        //Add our location to the map
+        mMap.addMarker(new MarkerOptions().position(ourLocation).title("You are here!").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+
+        //Move camera to our location
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ourLocation, 12.0f));
 
-        Log.e("Map later", mMap.getCameraPosition() + "");
+        //ToDo Route Drawing
 
         //Line between locations
         PolylineOptions line = new PolylineOptions();

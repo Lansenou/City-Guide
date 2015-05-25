@@ -20,18 +20,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/searchView"
-        android:divider="@color/divider" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider" />
+        android:divider="@color/divider"
+        android:dividerHeight="2dp"/>
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:divider="@color/divider"
         android:layout_below="@+id/searchView"
-        android:divider="@color/divider" />
+        android:dividerHeight="2dp"/>
 
 </RelativeLayout>

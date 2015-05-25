@@ -83,6 +83,11 @@ public class RouteFragment extends Fragment {
         return view;
     }
 
+    public void UpdateList() {
+        if (routeAdapter != null)
+            routeAdapter.notifyDataSetChanged();
+    }
+
     void loadHeaderAndFooter() {
         //List Header
         View header = View.inflate(getActivity().getApplicationContext(), R.layout.route_row, null);

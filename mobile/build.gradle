@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+    }
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
-
     defaultConfig {
         applicationId "com.hva.group8.cityguide"
         minSdkVersion 15
@@ -13,8 +14,12 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "google_maps_api_key", "AIzaSyDBGnEgKjT4mSYMpjV2zml4XQTuPsmljKU"
+        }
+        debug {
+            resValue "string", "google_maps_api_key", "AIzaSyDJ6k9d63pRrpY5pZPNNoRosF6BbT0s-nc"
         }
     }
 }

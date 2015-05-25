@@ -426,6 +426,11 @@ available. Please contact the developer for assistance.</string>
     <eat-comment/>
     <string name="drawer_close">Close Navigation Drawer!</string>
     <string name="drawer_open">Open Navigation Drawer!</string>
+    <!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/mobile/build/generated/res/generated/debug/values/generated.xml -->
+    <eat-comment/>
+    <item name="google_maps_api_key" type="string">AIzaSyDJ6k9d63pRrpY5pZPNNoRosF6BbT0s-nc</item>
+    <!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/mobile/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string name="gps_not_found">We didn\'t find a gps location.
     We\'ll use the center point of Amsterdam instead.</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
@@ -467,6 +472,9 @@ available. Please contact the developer for assistance.</string>
     <string name="sub_theater">Theater</string>
     <string name="sub_wellness">Wellness</string>
     <string name="sub_youththeater">Theater for youth</string>
+    <string name="tab_dist">Distance</string>
+    <string name="tab_name">Name</string>
+    <string name="tab_rate">Rating</string>
     <string name="title_activity_category_list">Category</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_route">Route</string>

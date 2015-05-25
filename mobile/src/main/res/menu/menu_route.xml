@@ -11,5 +11,5 @@
         android:title="@string/action_route"
         android:orderInCategory="100"
         app:showAsAction="always"
-        android:icon="@drawable/ic_menu_mapmode"/>
+        android:icon="@drawable/action_switch"/>
 </menu>

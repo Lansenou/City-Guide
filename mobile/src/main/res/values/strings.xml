@@ -145,5 +145,8 @@
     <string name="action_route">Switch RouteView</string>
     <string name="drawer_open">Open Navigation Drawer!</string>
     <string name="drawer_close">Close Navigation Drawer!</string>
+    <string name="tab_name">Name</string>
+    <string name="tab_dist">Distance</string>
+    <string name="tab_rate">Rating</string>
 
 </resources>

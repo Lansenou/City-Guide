@@ -9,16 +9,21 @@ package com.hva.group8.cityguide;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.hva.group8.cityguide.Loaders.LoadActivityItemFromURL;
+import com.hva.group8.cityguide.Managers.UserInfo;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by Lansenou on 23/05/2015.
@@ -33,7 +38,9 @@ public class SearchActivityFragment extends CustomFragment {
     public ListView listView;
     //Async loader
     private LoadActivityItemFromURL async = null;
-    private ArrayList<ActivityItem> itemList;
+
+    public ArrayList<ActivityItem> searchItemList;
+    public ActivityListAdapter searchAdapter;
 
     public void setupSearch(View view) {
         //Get Views
@@ -65,25 +72,25 @@ public class SearchActivityFragment extends CustomFragment {
                 nameValuePairs.add(new BasicNameValuePair("query", query));
 
                 //Instantiate ItemList and JSONAdapter
-                itemList = new ArrayList<>();
-                ActivityListAdapter adapter = new ActivityListAdapter(getActivity().getApplicationContext(), 0, itemList);
+                searchItemList = new ArrayList<>();
+                searchAdapter = new ActivityListAdapter(getActivity().getApplicationContext(), 0, searchItemList);
 
                 //Async loads item into the adapter
                 if (async != null)
                     async.cancel(true);
-                async = new LoadActivityItemFromURL(adapter, nameValuePairs, getActivity().getApplicationContext(), "http://www.lansenou.com/database/search.php");
+                async = new LoadActivityItemFromURL(searchAdapter, nameValuePairs, getActivity().getApplicationContext(), "http://www.lansenou.com/database/search.php");
                 async.dialog(getActivity());
                 async.execute();
 
                 //Set the listview it's adapter
-                listView.setAdapter(adapter);
+                listView.setAdapter(searchAdapter);
 
                 //Set OnClickListener
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         ViewActivityFragment fragment = ViewActivityFragment.newInstance();
-                        fragment.myItem = itemList.get(position);
+                        fragment.myItem = searchItemList.get(position);
                         ((MainActivity) getActivity()).SwitchFragment(fragment, false, 0);
                     }
                 });
@@ -103,6 +110,47 @@ public class SearchActivityFragment extends CustomFragment {
                 return false;
             }
         });
+    }
+
+    public void sortList(int sortMethod, List<ActivityItem> itemList, ArrayAdapter adapter) {
+        switch (sortMethod) {
+            case 0:     //Sort list by name
+                Collections.sort(itemList, new Comparator<ActivityItem>() {
+                    public int compare(ActivityItem o1, ActivityItem o2) {
+                        String title1 = UserInfo.getInstance().getLanguage().equals("nl") ? o1.Title : o1.TitleEN;
+                        String title2 = UserInfo.getInstance().getLanguage().equals("nl") ? o2.Title : o2.TitleEN;
+                        return title1.compareToIgnoreCase(title2);
+                    }
+                });
+
+                break;
+
+            case 1:     //Sort list by distance
+                Collections.sort(itemList, new Comparator<ActivityItem>() {
+                    public int compare(ActivityItem o1, ActivityItem o2) {
+                        if (o1.Distance == o2.Distance)
+                            return 0;
+                        return (o1.Distance > o2.Distance) ? 1 : -1;
+                    }
+                });
+
+                break;
+
+            case 2:     //ToDo Sort list by rating
+                Collections.sort(itemList, new Comparator<ActivityItem>() {
+                    public int compare(ActivityItem o1, ActivityItem o2) {
+                        if (o1.Distance == o2.Distance)
+                            return 0;
+                        return (o1.Distance > o2.Distance) ? 1 : -1;
+                    }
+                });
+                break;
+
+            default:
+                break;
+        }
+        //Notify adapter
+        adapter.notifyDataSetChanged();
     }
 
     public void closeSearchView() {

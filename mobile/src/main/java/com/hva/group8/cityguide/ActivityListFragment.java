@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -52,6 +53,7 @@ public class ActivityListFragment extends SearchActivityFragment {
         View view = inflater.inflate(R.layout.fragment_activitylist, container, false);
         listView = (ListView) view.findViewById(R.id.listView);
 
+
         //Prevent from reloading every time the user click on a different tab
         if (!fragmentResume && fragmentVisible)
             updateList();
@@ -82,57 +84,19 @@ public class ActivityListFragment extends SearchActivityFragment {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton checkedRadioButton = (RadioButton)radioGroup.findViewById(checkedId);
+                RadioButton checkedRadioButton = (RadioButton) radioGroup.findViewById(checkedId);
                 int checkedIndex = radioGroup.indexOfChild(checkedRadioButton);
-                sortList(checkedIndex);
+                sortList(checkedIndex, itemList, adapter);
+                sortList(checkedIndex, searchItemList, searchAdapter);
                 Log.i("Index was", checkedIndex + ".");
             }
         });
 
-
+        setupSearch(view);
+        viewList.add(listView);
         return view;
     }
 
-    private void sortList(int sortMethod) {
-        switch (sortMethod) {
-            case 0:     //Sort list by name
-                Collections.sort(itemList, new Comparator<ActivityItem>() {
-                    public int compare(ActivityItem o1, ActivityItem o2) {
-                        String title1 = UserInfo.getInstance().getLanguage().equals("nl") ? o1.Title : o1.TitleEN;
-                        String title2 = UserInfo.getInstance().getLanguage().equals("nl") ? o2.Title : o2.TitleEN;
-                        return title1.compareToIgnoreCase(title2);
-                    }
-                });
-
-                break;
-
-            case 1:     //Sort list by distance
-                Collections.sort(itemList, new Comparator<ActivityItem>() {
-                    public int compare(ActivityItem o1, ActivityItem o2) {
-                        if (o1.Distance == o2.Distance)
-                            return 0;
-                        return (o1.Distance > o2.Distance) ? 1 : -1;
-                    }
-                });
-
-                break;
-
-            case 2:     //ToDo Sort list by rating
-                Collections.sort(itemList, new Comparator<ActivityItem>() {
-                    public int compare(ActivityItem o1, ActivityItem o2) {
-                        if (o1.Distance == o2.Distance)
-                            return 0;
-                        return (o1.Distance > o2.Distance) ? 1 : -1;
-                    }
-                });
-                break;
-
-            default:
-                break;
-        }
-        //Notify adapter
-        adapter.notifyDataSetChanged();
-    }
 
     private void updateList() {
         //Name value pairs

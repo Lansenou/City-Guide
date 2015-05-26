@@ -133,5 +133,11 @@
     <string-array name="hold_add">
         <item>Voeg locatie toe</item>
     </string-array>
+    <string name="action_loading">Een ogenblik alstublieft.</string>
+    <string name="action_loading_title">Laden!</string>
+    <string name="toast_removed">Activiteit verwijderd</string>
+    <string name="tab_dist">Afstand</string>
+    <string name="tab_name">Naam</string>
+    <string name="tab_rate">Beoordeling</string>
 
 </resources>

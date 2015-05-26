@@ -21,27 +21,21 @@ import com.hva.group8.cityguide.Managers.UserInfo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 
 public class MainActivity extends ActionBarActivity {
 
+    private static MainActivity instance;
+    public ActionBarDrawerToggle mDrawerToggle;
     //Navigation Drawer
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-    public ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private CustomDrawerAdapter mDrawerAdapter;
     private List<DrawerItem> mDrawerItems = new ArrayList<DrawerItem>();
     private ViewPager pager;
-
     private MainFragment mainFragment;
-
-    //Fragment History
-    Stack<Integer> pageHistory;
-
-    private static MainActivity instance;
 
     public static MainActivity getInstance() {
         if (instance == null)
@@ -51,7 +45,7 @@ public class MainActivity extends ActionBarActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         //Initialize
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -59,6 +53,11 @@ public class MainActivity extends ActionBarActivity {
         setupNavigationDrawer();
 
         instance = this;
+
+        int likes = 50;
+        int dislikes = 70;
+        float rating = 5 * ((float) likes / (likes + dislikes));
+        Log.i("Rating", rating + ".");
 
         mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.tab_host);
         pager = (ViewPager) mainFragment.getView().findViewById(R.id.pager);
@@ -161,6 +160,9 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case 1: //Route
                 SwitchFragment(RouteFragment.newInstance(), position, 1);
+                break;
+            case 3: //Settings
+                SwitchFragment(SettingsFragment.newInstance(), position, 0);
                 break;
             default:
                 SwitchFragment(BlankFragment.newInstance(), position, 0);

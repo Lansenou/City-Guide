@@ -91,5 +91,7 @@
         android:layout_alignBottom="@+id/EstTimeTxt"
         android:layout_marginLeft="7dp"
         android:layout_toEndOf="@+id/ivPicture"
-        android:layout_toRightOf="@+id/ivPicture" />
+        android:layout_toRightOf="@+id/ivPicture"
+        android:numStars="5"
+        android:stepSize="0.01" />
 </RelativeLayout>

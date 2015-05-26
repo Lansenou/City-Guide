@@ -14,6 +14,8 @@ import java.util.List;
 public class HomeFragment extends SearchActivityFragment {
 
     public static HomeFragment instance;
+    ExpandableListView mExpendableListView;
+    List<HomeGroupItem> groupItems = new ArrayList<>();
 
     public static HomeFragment getInstance() {
         if (instance == null)
@@ -24,9 +26,6 @@ public class HomeFragment extends SearchActivityFragment {
     public static HomeFragment newInstance() {
         return (instance = new HomeFragment());
     }
-
-    ExpandableListView mExpendableListView;
-    List<HomeGroupItem> groupItems = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,11 +55,11 @@ public class HomeFragment extends SearchActivityFragment {
     public void setGroupData() {
         List<HomeGroupItem> a = new ArrayList<>();
         List<HomeGroupItem> b = new ArrayList<>();
-        groupItems.add(new HomeGroupItem(R.drawable.categories, "Categories"));
+        groupItems.add(new HomeGroupItem(R.drawable.categories, getString(R.string.category)));
         a.add(new HomeGroupItem(R.drawable.no_image, "test2"));
-        groupItems.add(new HomeGroupItem(R.drawable.cat_top10, "Top 10 locations", a));
+        groupItems.add(new HomeGroupItem(R.drawable.cat_top10, getString(R.string.top10), a));
         b.add(new HomeGroupItem(R.drawable.no_image, "test3"));
-        groupItems.add(new HomeGroupItem(R.drawable.cat_nearby, "Nearby locations", b));
+        groupItems.add(new HomeGroupItem(R.drawable.cat_nearby, getString(R.string.nearby), b));
     }
 
     @Override

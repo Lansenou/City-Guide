@@ -7,7 +7,6 @@
 package com.hva.group8.cityguide;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -17,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.hva.group8.cityguide.Loaders.CustomPagerAdapter;
@@ -29,6 +29,7 @@ import java.text.DecimalFormat;
 public class ViewActivityFragment extends CustomFragment {
 
     public static ViewActivityFragment instance;
+    ActivityItem myItem;
 
     public static ViewActivityFragment getInstance() {
         if (instance == null)
@@ -39,10 +40,6 @@ public class ViewActivityFragment extends CustomFragment {
     public static ViewActivityFragment newInstance() {
         return (instance = new ViewActivityFragment());
     }
-
-
-    ActivityItem myItem;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,6 +58,10 @@ public class ViewActivityFragment extends CustomFragment {
         //Set all the text values
         tvOpeningstijd.setText(UserInfo.getInstance().getLanguage().equals("nl") ? myItem.Calender : myItem.CalenderEN);
         tvTitle.setText(UserInfo.getInstance().getLanguage().equals("nl") ? myItem.Title : myItem.TitleEN);
+
+        RatingBar ratingBar = (RatingBar) view.findViewById(R.id.ratingBar);
+        float rating = 5 * ((float) myItem.Likes / ((float) myItem.Likes + (float) myItem.Dislikes));
+        ratingBar.setRating(rating);
 
         DecimalFormat df = new DecimalFormat("#.00");
         estTime.setText(myItem.TravelTime);

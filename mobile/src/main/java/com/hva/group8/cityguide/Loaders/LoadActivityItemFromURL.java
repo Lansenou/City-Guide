@@ -139,6 +139,8 @@ public class LoadActivityItemFromURL extends AsyncTask<ArrayList<NameValuePair>,
         tempItem.Longitude = Double.parseDouble(obj.getString("Longitude"));
         tempItem.Distance = UserInfo.getInstance().getDistance(context, tempItem.Longitude, tempItem.Latitude);
         tempItem.TravelTime = UserInfo.getInstance().getTime(tempItem.Distance);
+        tempItem.Likes = obj.getInt("RateLike");
+        tempItem.Dislikes = obj.getInt("RateDislike");
         return tempItem;
     }
 }

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.hva.group8.cityguide.Managers.RouteManager;
@@ -75,6 +76,9 @@ public class ActivityListAdapter extends ArrayAdapter<ActivityItem> {
             }
         });
 
+        RatingBar ratingBar = (RatingBar) convertView.findViewById(R.id.ratingBar);
+        float rating = 5 * ((float) item.Likes / ((float) item.Likes + (float) item.Dislikes));
+        ratingBar.setRating(rating);
 
         //Stuff needed to load the picture and show/remove the progressbar
         final ProgressBar progressBar = (ProgressBar) convertView.findViewById(R.id.loadingPanel);

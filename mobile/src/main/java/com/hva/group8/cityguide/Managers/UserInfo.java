@@ -133,7 +133,6 @@ public class UserInfo implements LocationListener {
 
         //Location Can't be null
         if (locationA == null) {
-            newToast(context, context.getText(R.string.gps_not_found).toString(), Toast.LENGTH_SHORT);
             locationA = new Location("Amsterdam");
             locationA.setLatitude(52.370215700000000000);    //DEFAULT AMSTERDAM LAT
             locationA.setLongitude(4.895167899999933000);    //DEFAULT AMSTERDAM LONG

@@ -1,9 +1,6 @@
 package com.hva.group8.cityguide;
 
-import android.app.LocalActivityManager;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +9,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Switch;
-import android.widget.TabHost;
 
 import com.hva.group8.cityguide.Loaders.LoadActivityItemFromURL;
 import com.hva.group8.cityguide.Managers.UserInfo;
@@ -27,9 +22,20 @@ import java.util.Comparator;
 import java.util.List;
 
 
-public class ActivityListFragment extends CustomFragment {
+public class ActivityListFragment extends SearchActivityFragment {
 
     public static ActivityListFragment instance;
+    //Other fragment sets these
+    public HomeGroupItem info;
+    public String tableName;
+    //Used to create listview
+    private List<ActivityItem> itemList;
+    private ListView listView;
+    private ActivityListAdapter adapter;
+    //Prevent from reloading every time the user click on a different tab
+    private boolean fragmentResume=false;
+    private boolean fragmentVisible=false;
+    private boolean fragmentOnCreated=false;
 
     public static ActivityListFragment getInstance() {
         if (instance == null)
@@ -40,22 +46,6 @@ public class ActivityListFragment extends CustomFragment {
     public static ActivityListFragment newInstance() {
         return (instance = new ActivityListFragment());
     }
-
-
-    //Other fragment sets these
-    public HomeGroupItem info;
-    public String tableName;
-
-    //Used to create listview
-    private List<ActivityItem> itemList;
-    private ListView listView;
-    private ActivityListAdapter adapter;
-
-
-    //Prevent from reloading every time the user click on a different tab
-    private boolean fragmentResume=false;
-    private boolean fragmentVisible=false;
-    private boolean fragmentOnCreated=false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

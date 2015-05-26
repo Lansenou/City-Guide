@@ -20,4 +20,6 @@ public class ActivityItem implements Serializable {
     public double Longitude, Latitude;
     public float Distance;
     public String TravelTime;
+    public int Likes;
+    public int Dislikes;
 }

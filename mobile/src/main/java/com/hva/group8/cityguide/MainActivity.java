@@ -17,7 +17,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.hva.group8.cityguide.Loaders.DBConnect;
+import com.hva.group8.cityguide.Managers.RouteManager;
 import com.hva.group8.cityguide.Managers.UserInfo;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,15 +31,16 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity {
 
     private static MainActivity instance;
-    public ActionBarDrawerToggle mDrawerToggle;
     //Navigation Drawer
+    public ActionBarDrawerToggle mDrawerToggle;
+    //Fragments
+    public ViewPager pager;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private CustomDrawerAdapter mDrawerAdapter;
     private List<DrawerItem> mDrawerItems = new ArrayList<DrawerItem>();
-    private ViewPager pager;
     private MainFragment mainFragment;
 
     public static MainActivity getInstance() {
@@ -42,7 +48,6 @@ public class MainActivity extends ActionBarActivity {
             instance = new MainActivity();
         return instance;
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -117,6 +122,19 @@ public class MainActivity extends ActionBarActivity {
         //Toolbar icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+    }
+
+    public void LikeHandler(int value) {
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        List<ActivityItem> list = RouteManager.getInstance().routeList;
+        if (list.size() <= 0)
+            return;
+        ActivityItem item = list.get(0);
+
+        nameValuePairs.add(new BasicNameValuePair("id", item.Id));
+        nameValuePairs.add(new BasicNameValuePair("value", String.valueOf(value)));
+
+        DBConnect.Insert(nameValuePairs, "http://www.lansenou.com/database/likes.php");
     }
 
 

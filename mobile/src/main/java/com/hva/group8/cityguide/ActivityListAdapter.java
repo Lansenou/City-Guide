@@ -2,6 +2,9 @@ package com.hva.group8.cityguide;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,7 +81,13 @@ public class ActivityListAdapter extends ArrayAdapter<ActivityItem> {
 
         RatingBar ratingBar = (RatingBar) convertView.findViewById(R.id.ratingBar);
         float rating = 5 * ((float) item.Likes / ((float) item.Likes + (float) item.Dislikes));
+        if (item.Likes == 0 && item.Dislikes == 0)
+            rating = 2.5f;
         ratingBar.setRating(rating);
+        LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP); //FULL
+        stars.getDrawable(1).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP); //Lines
+        stars.getDrawable(0).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP); //EMPTY
 
         //Stuff needed to load the picture and show/remove the progressbar
         final ProgressBar progressBar = (ProgressBar) convertView.findViewById(R.id.loadingPanel);

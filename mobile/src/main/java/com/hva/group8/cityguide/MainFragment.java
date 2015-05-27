@@ -14,6 +14,9 @@ import com.viewpagerindicator.TabPageIndicator;
 public class MainFragment extends Fragment {
 
     public static MainFragment instance;
+    private ViewPager mPager;
+    private TabPageIndicator mTabPageIndicator;
+    private TabPageIndicatorAdapter mTabPageIndicatorAdapter;
 
     public static MainFragment getInstance() {
         if (instance == null)
@@ -25,14 +28,9 @@ public class MainFragment extends Fragment {
         return (instance = new MainFragment());
     }
 
-    private ViewPager mPager;
-    private TabPageIndicator mTabPageIndicator;
-    private TabPageIndicatorAdapter mTabPageIndicatorAdapter;
-    private View view;
-
     public TabPageIndicatorAdapter getTabPageIndicatorAdapter() {
         if (mTabPageIndicatorAdapter == null) {
-            mTabPageIndicatorAdapter = new TabPageIndicatorAdapter(getFragmentManager(), (MainActivity) getActivity());
+            mTabPageIndicatorAdapter = new TabPageIndicatorAdapter(getFragmentManager());
         }
         if (mTabPageIndicator == null)
             Log.e("Main Fragment", "mTabPageIndicator was null");
@@ -42,7 +40,7 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.e("Created Main", "Fragment");
-        view = inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         // Get a reference from the layout
         mPager = (ViewPager) view.findViewById(R.id.pager);

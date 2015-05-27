@@ -24,9 +24,9 @@ public class UserInfo implements LocationListener {
     //Singleton
     private static UserInfo instance;
     public boolean sendNotifications = true;
+    public Toast toast;
     Context context;
     private LocationManager manager;
-    private Toast toast;
     private String language = "";
     private String travelMode = "walking"; // walking \ driving \ bicycling \ transit
 

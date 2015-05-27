@@ -148,5 +148,7 @@
     <string name="tab_name">Name</string>
     <string name="tab_dist">Distance</string>
     <string name="tab_rate">Rating</string>
+    <string name="action_send">Route has been sent to your smartwatch!</string>
+    <string name="action_send_title">Sending Route</string>
 
 </resources>

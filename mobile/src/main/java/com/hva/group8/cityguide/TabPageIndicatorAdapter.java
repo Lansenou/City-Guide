@@ -3,31 +3,28 @@ package com.hva.group8.cityguide;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.view.ViewGroup;
 
 /**
  * Created by Mustafa on 12-5-2015.
+ * Updated  by Lansenou on 16-5-2018
  */
 
 public class TabPageIndicatorAdapter extends FragmentStatePagerAdapter {
 
     //Tab pages
     private static final String[] tabTitles = new String[]{"Home", "Route", "Start"};
-
-    private FragmentManager fm;
+    //Tab 1 Fragment
+    private Fragment homeFragment;
+    //Tab 2 Fragment
+    private Fragment routeFragment;
+    //Tab 3 Fragment
+    private Fragment watchFragment;
 
     //Constructor
-    public TabPageIndicatorAdapter(FragmentManager fm, MainActivity parent) {
+    public TabPageIndicatorAdapter(FragmentManager fm) {
         super(fm);
-        this.fm = fm;
     }
-
-    //Fragment
-    private Fragment homeFragment;
-
-    //Fragment
-    private Fragment routeFragment;
 
     public void ReplaceHomeFragment(Fragment fragment) {
         homeFragment = fragment;
@@ -52,6 +49,11 @@ public class TabPageIndicatorAdapter extends FragmentStatePagerAdapter {
                 if (routeFragment == null)
                     routeFragment = RouteFragment.newInstance();
                 fragment = routeFragment;
+                break;
+            case 2:
+                if (watchFragment == null)
+                    watchFragment = SmartwatchFragment.newInstance();
+                fragment = watchFragment;
                 break;
             default:
                 fragment = BlankFragment.newInstance();

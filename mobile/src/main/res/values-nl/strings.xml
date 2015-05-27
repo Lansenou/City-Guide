@@ -139,5 +139,7 @@
     <string name="tab_dist">Afstand</string>
     <string name="tab_name">Naam</string>
     <string name="tab_rate">Beoordeling</string>
+    <string name="action_send">De route is verstuurd naar uw smartwatch!</string>
+    <string name="action_send_title">Route Versturen</string>
 
 </resources>

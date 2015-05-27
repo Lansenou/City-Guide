@@ -9,7 +9,6 @@ package com.hva.group8.cityguide;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,10 +28,17 @@ import com.hva.group8.cityguide.Managers.UserInfo;
 
 import java.util.List;
 
+/**
+ * Created by Lansenou on 22-5-2015.
+ */
 
 public class MapsFragment extends Fragment {
 
     private static MapsFragment instance;
+    private UserInfo userInfo = UserInfo.getInstance();
+    private List<ActivityItem> routeList = RouteManager.getInstance().routeList;
+    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    private SupportMapFragment fragment;
 
     public static MapsFragment getInstance() {
         if (instance == null)
@@ -43,13 +49,6 @@ public class MapsFragment extends Fragment {
     public static MapsFragment newInstance() {
         return (instance = new MapsFragment());
     }
-
-    private UserInfo userInfo = UserInfo.getInstance();
-    private List<ActivityItem> routeList = RouteManager.getInstance().routeList;
-
-    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-    private SupportMapFragment fragment;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

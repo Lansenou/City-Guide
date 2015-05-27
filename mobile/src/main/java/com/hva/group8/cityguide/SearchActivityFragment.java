@@ -6,7 +6,6 @@
 
 package com.hva.group8.cityguide;
 
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,11 +35,10 @@ public class SearchActivityFragment extends CustomFragment {
     //The standard search and listview in each activity
     public SearchView searchView;
     public ListView listView;
-    //Async loader
-    private LoadActivityItemFromURL async = null;
-
     public ArrayList<ActivityItem> searchItemList;
     public ActivityListAdapter searchAdapter;
+    //Async loader
+    private LoadActivityItemFromURL async = null;
 
     public void setupSearch(View view) {
         //Get Views
@@ -113,6 +111,8 @@ public class SearchActivityFragment extends CustomFragment {
     }
 
     public void sortList(int sortMethod, List<ActivityItem> itemList, ArrayAdapter adapter) {
+        if (itemList == null || adapter == null)
+            return;
         switch (sortMethod) {
             case 0:     //Sort list by name
                 Collections.sort(itemList, new Comparator<ActivityItem>() {
@@ -136,14 +136,17 @@ public class SearchActivityFragment extends CustomFragment {
 
                 break;
 
-            case 2:     //ToDo Sort list by rating
+            case 2:     // Sort list by rating
                 Collections.sort(itemList, new Comparator<ActivityItem>() {
                     public int compare(ActivityItem o1, ActivityItem o2) {
-                        if (o1.Distance == o2.Distance)
+                        float Rating1 = (float) o1.Likes / ((float) o1.Likes + o1.Dislikes);
+                        float Rating2 = (float) o1.Likes / ((float) o1.Likes + o1.Dislikes);
+                        if (Rating1 == Rating2)
                             return 0;
-                        return (o1.Distance > o2.Distance) ? 1 : -1;
+                        return (Rating1 > Rating2) ? 1 : -1;
                     }
                 });
+                Collections.reverse(itemList);
                 break;
 
             default:

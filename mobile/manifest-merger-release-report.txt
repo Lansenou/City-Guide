@@ -178,27 +178,27 @@ MERGED from com.google.android.gms:play-services-base:7.3.0:21:9
 meta-data#com.google.android.maps.v2.API_KEY
 ADDED from AndroidManifest.xml:32:9
 	android:name
-		ADDED from AndroidManifest.xml:32:20
+		ADDED from AndroidManifest.xml:33:13
 	android:value
-		ADDED from AndroidManifest.xml:32:70
+		ADDED from AndroidManifest.xml:34:13
 activity#com.hva.group8.cityguide.MainActivity
-ADDED from AndroidManifest.xml:35:9
+ADDED from AndroidManifest.xml:37:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:38:13
+		ADDED from AndroidManifest.xml:40:13
 	android:label
-		ADDED from AndroidManifest.xml:37:13
+		ADDED from AndroidManifest.xml:39:13
 	android:name
-		ADDED from AndroidManifest.xml:36:13
+		ADDED from AndroidManifest.xml:38:13
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:39:13
+ADDED from AndroidManifest.xml:41:13
 action#android.intent.action.MAIN
-ADDED from AndroidManifest.xml:40:17
+ADDED from AndroidManifest.xml:42:17
 	android:name
-		ADDED from AndroidManifest.xml:40:25
+		ADDED from AndroidManifest.xml:42:25
 category#android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:41:17
+ADDED from AndroidManifest.xml:43:17
 	android:name
-		ADDED from AndroidManifest.xml:41:27
+		ADDED from AndroidManifest.xml:43:27
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 MERGED from City-Guide:library:unspecified:7:5

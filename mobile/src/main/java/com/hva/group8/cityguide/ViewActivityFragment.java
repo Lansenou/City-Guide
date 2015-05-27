@@ -6,6 +6,9 @@
 
 package com.hva.group8.cityguide;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
@@ -61,8 +64,14 @@ public class ViewActivityFragment extends CustomFragment {
 
         RatingBar ratingBar = (RatingBar) view.findViewById(R.id.ratingBar);
         float rating = 5 * ((float) myItem.Likes / ((float) myItem.Likes + (float) myItem.Dislikes));
-        ratingBar.setRating(rating);
 
+        ratingBar.setRating(rating);
+        LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP); //FULL
+        stars.getDrawable(1).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);  //LINES
+        stars.getDrawable(0).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP); //EMPTY
+
+        //Time ends with :00
         DecimalFormat df = new DecimalFormat("#.00");
         estTime.setText(myItem.TravelTime);
 

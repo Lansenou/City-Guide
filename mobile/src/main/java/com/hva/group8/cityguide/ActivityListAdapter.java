@@ -85,9 +85,9 @@ public class ActivityListAdapter extends ArrayAdapter<ActivityItem> {
             rating = 2.5f;
         ratingBar.setRating(rating);
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
-        stars.getDrawable(2).setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP); //FULL
-        stars.getDrawable(1).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP); //Lines
-        stars.getDrawable(0).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP); //EMPTY
+        stars.getDrawable(2).setColorFilter(convertView.getResources().getColor(R.color.star_full), PorterDuff.Mode.SRC_ATOP); //FULL
+        stars.getDrawable(1).setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP); //Lines
+        stars.getDrawable(0).setColorFilter(convertView.getResources().getColor(R.color.star_back), PorterDuff.Mode.SRC_ATOP); //EMPTY
 
         //Stuff needed to load the picture and show/remove the progressbar
         final ProgressBar progressBar = (ProgressBar) convertView.findViewById(R.id.loadingPanel);

@@ -69,7 +69,7 @@ public class ViewActivityFragment extends CustomFragment {
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP); //FULL
         stars.getDrawable(1).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);  //LINES
-        stars.getDrawable(0).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP); //EMPTY
+        stars.getDrawable(0).setColorFilter(view.getResources()., PorterDuff.Mode.SRC_ATOP); //EMPTY
 
         //Time ends with :00
         DecimalFormat df = new DecimalFormat("#.00");

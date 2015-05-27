@@ -59,7 +59,14 @@ public class ViewActivityFragment extends CustomFragment {
 
         // Lookup and populate view with Time
         //Set all the text values
-        tvOpeningstijd.setText(UserInfo.getInstance().getLanguage().equals("nl") ? myItem.Calender : myItem.CalenderEN);
+
+        String calender = UserInfo.getInstance().getLanguage().equals("nl") ? myItem.Calender : myItem.CalenderEN;
+        if (calender.equals("0") || calender.isEmpty())
+            calender = getString(R.string.no_calender);
+
+        tvOpeningstijd.setText(calender);
+        tvOpeningstijd.setSelected(true);
+
         tvTitle.setText(UserInfo.getInstance().getLanguage().equals("nl") ? myItem.Title : myItem.TitleEN);
 
         RatingBar ratingBar = (RatingBar) view.findViewById(R.id.ratingBar);
@@ -68,8 +75,7 @@ public class ViewActivityFragment extends CustomFragment {
         ratingBar.setRating(rating);
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP); //FULL
-        stars.getDrawable(1).setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);  //LINES
-        stars.getDrawable(0).setColorFilter(view.getResources()., PorterDuff.Mode.SRC_ATOP); //EMPTY
+        stars.getDrawable(0).setColorFilter(view.getResources().getColor(R.color.transparent), PorterDuff.Mode.SRC_ATOP); //EMPTY
 
         //Time ends with :00
         DecimalFormat df = new DecimalFormat("#.00");

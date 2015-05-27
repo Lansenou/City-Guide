@@ -1,6 +1,6 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="75dp"
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
@@ -8,8 +8,8 @@
         android:id="@+id/ivPicture"
         android:layout_width="55dp"
         android:layout_height="55dp"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
         android:maxHeight="55dp"
         android:maxWidth="55dp"
         android:src="@drawable/no_image" />
@@ -18,8 +18,8 @@
     <LinearLayout
         android:layout_width="55dp"
         android:layout_height="55dp"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
         android:gravity="center"
         android:maxHeight="55dp"
         android:maxWidth="55dp">
@@ -28,22 +28,32 @@
             android:id="@+id/loadingPanel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminate="true" />
+            android:indeterminate="true"/>
     </LinearLayout>
 
     <TextView
         android:id="@+id/activityTekst1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ivPicture"
-        android:layout_marginLeft="7dp"
+        android:layout_alignTop="@+id/imageButton"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/ivPicture"
         android:layout_toLeftOf="@+id/imageButton"
         android:layout_toRightOf="@+id/ivPicture"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:freezesText="true"
+        android:gravity="left"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:maxLines="1"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
         android:text="Test"
         android:textColor="@color/ListViewText"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+        android:textSize="20dp" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -64,10 +74,12 @@
         android:id="@+id/distanceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/imageButton"
-        android:layout_toLeftOf="@+id/EstTimeTxt"
+        android:layout_alignBottom="@+id/ratingBar"
+        android:layout_marginLeft="33dp"
+        android:layout_marginStart="33dp"
+        android:layout_toEndOf="@+id/ratingBar"
         android:layout_toRightOf="@+id/ratingBar"
-        android:text="X.X Km"
+        android:text="0.6 Km"
         android:textColor="@color/text_gray"
         android:textSize="12sp" />
 
@@ -75,11 +87,13 @@
         android:id="@+id/EstTimeTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageButton"
+        android:layout_alignTop="@+id/distanceText"
+        android:layout_marginRight="10dp"
         android:layout_toLeftOf="@+id/imageButton"
-        android:text="10 Min"
+        android:layout_toStartOf="@+id/imageButton"
+        android:text="10 Min."
         android:textColor="@color/text_gray"
-        android:textSize="12sp" />
+        android:textSize="12sp"/>
 
 
     <RatingBar
@@ -87,12 +101,11 @@
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/distanceText"
-        android:layout_alignBottom="@+id/EstTimeTxt"
-        android:layout_marginLeft="7dp"
-        android:layout_toEndOf="@+id/ivPicture"
-        android:layout_toRightOf="@+id/ivPicture"
+        android:layout_alignLeft="@+id/activityTekst1"
+        android:layout_alignStart="@+id/activityTekst1"
+        android:layout_below="@+id/activityTekst1"
+        android:layout_marginTop="2dp"
         android:numStars="5"
         android:rating="2.5"
-        android:stepSize="0.01" />
-</RelativeLayout>
+        android:stepSize="0.01"/>
+    </RelativeLayout>

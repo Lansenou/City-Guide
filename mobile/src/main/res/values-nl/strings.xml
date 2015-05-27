@@ -141,5 +141,6 @@
     <string name="tab_rate">Beoordeling</string>
     <string name="action_send">De route is verstuurd naar uw smartwatch!</string>
     <string name="action_send_title">Route Versturen</string>
+    <string name="no_calender">Er zijn geen openingstijden beschikbaar.</string>
 
 </resources>

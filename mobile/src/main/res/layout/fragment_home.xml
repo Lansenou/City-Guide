@@ -9,8 +9,8 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@color/divider"
         android:background="@color/lighter_gray"
+        android:divider="@color/divider"
         android:focusable="false"
         android:iconifiedByDefault="false"
         android:queryHint="@string/action_search" />
@@ -22,16 +22,10 @@
         android:layout_below="@+id/searchView"
         android:divider="@color/divider" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider" />
-
     <ExpandableListView
         android:id="@+id/expandableListView"
         android:layout_width="match_parent"
-        android:layout_height="381dp"
-        android:layout_gravity="center_horizontal"
-        android:divider="@color/divider"
-        android:layout_below="@+id/searchView" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/searchView"
+        android:divider="@color/divider" />
 </RelativeLayout>

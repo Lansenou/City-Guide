@@ -6,6 +6,7 @@
 
 package com.hva.group8.cityguide;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -139,10 +140,26 @@ public class SearchActivityFragment extends CustomFragment {
             case 2:     // Sort list by rating
                 Collections.sort(itemList, new Comparator<ActivityItem>() {
                     public int compare(ActivityItem o1, ActivityItem o2) {
-                        float Rating1 = (float) o1.Likes / ((float) o1.Likes + o1.Dislikes);
-                        float Rating2 = (float) o1.Likes / ((float) o1.Likes + o1.Dislikes);
-                        if (Rating1 == Rating2)
-                            return 0;
+                        int totalLikes1 = o1.Likes + o1.Dislikes;
+                        int totalLikes2 = o2.Likes + o2.Dislikes;
+                        float Rating1 = (float) o1.Likes / ((float) totalLikes1);
+                        float Rating2 = (float) o2.Likes / ((float) totalLikes2);
+
+
+                        //Dividing by zero
+                        if (Float.isNaN(Rating1)) {
+                            Rating1 = 0;
+                        }
+                        if (Float.isNaN(Rating2)) {
+                            Rating2 = 0;
+                        }
+
+                        Log.e("Rating", Rating1 + ".");
+                        if (Rating1 == Rating2) {
+                            if (totalLikes1 == totalLikes2)
+                                return 0;
+                            return totalLikes1 > totalLikes2 ? 1 : -1;
+                        }
                         return (Rating1 > Rating2) ? 1 : -1;
                     }
                 });

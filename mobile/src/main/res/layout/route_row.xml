@@ -1,65 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="fill_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ImageView
-        android:src="@drawable/route_activity_location"
+        android:id="@+id/imageView"
         android:layout_width="50dp"
         android:layout_height="70dp"
-        android:id="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:src="@drawable/route_activity_location" />
 
     <TextView
+        android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Current Location"
-        android:id="@+id/textViewTitle"
-        android:layout_gravity="center_horizontal"
         android:layout_alignBottom="@+id/imageView"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@id/imageView"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="21dp"
+        android:layout_toEndOf="@id/imageView"
+        android:layout_toRightOf="@+id/imageView"
+        android:text="Current Location"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/ListViewText"/>
 
     <ImageView
-        android:src="@drawable/travel_walking"
+        android:id="@+id/imageView2"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:id="@+id/imageView2"
         android:layout_alignBottom="@+id/imageView"
+        android:layout_toEndOf="@id/imageView"
         android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@id/imageView"/>
+        android:src="@drawable/travel_walking" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="100m"
         android:id="@+id/textViewDistance"
-        android:layout_alignBottom="@+id/imageView2"
-        android:layout_toRightOf="@+id/imageView2"
-        android:layout_toEndOf="@+id/imageView2"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/ListViewText"/>
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@+id/imageView2"
+        android:layout_toRightOf="@+id/imageView2"
+        android:text="100m"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_marginLeft="5dp"
-        android:layout_marginStart="5dp"
-        android:text="1 min"
+        android:textColor="@color/ListViewText" />
+
+    <TextView
         android:id="@+id/textViewTime"
-        android:layout_alignTop="@+id/textViewDistance"
-        android:layout_toRightOf="@+id/textViewDistance"
-        android:layout_toEndOf="@+id/textViewDistance"
-        android:textColor="@color/ListViewText"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="150dp"
+        android:text="1 min"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/ListViewText" />
 </RelativeLayout>

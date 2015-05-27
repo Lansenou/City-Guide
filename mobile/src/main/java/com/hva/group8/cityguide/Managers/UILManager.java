@@ -23,6 +23,32 @@ public class UILManager {
         return _instance;
     }
 
+    public static DisplayImageOptions getRoundImage() {
+        return new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .bitmapConfig(Bitmap.Config.RGB_565)            //SET THE IMAGE CONFIG SIZE
+                .imageScaleType(ImageScaleType.EXACTLY)         //SET THE IMAGE MAX SIZE
+                .showImageForEmptyUri(R.drawable.no_image)      //NO IMAGE FOUND
+                .showImageOnFail(R.drawable.no_image)           //IMAGE FAILED
+                .showImageOnLoading(R.drawable.load_image)      //WHILE LOADING
+                .displayer(new RoundedBitmapDisplayer(1000))    //ROUND THE IMAGE
+                .build();                                       //Build the Image Config
+    }
+
+    public static DisplayImageOptions getNormalImage() {
+        //Display Configuration
+        return new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisk(false)
+                .bitmapConfig(Bitmap.Config.RGB_565)            //SET THE IMAGE CONFIG SIZE
+                .imageScaleType(ImageScaleType.EXACTLY)         //SET THE IMAGE MAX SIZE
+                .showImageForEmptyUri(R.drawable.no_image)      //NO IMAGE FOUND
+                .showImageOnFail(R.drawable.no_image)           //IMAGE FAILED
+                .showImageOnLoading(R.drawable.load_image)      //WHILE LOADING
+                .build();                                       //Build the Image Config
+    }
+
     public ImageLoader getImageLoader(Context context) {
         if (!ImageLoader.getInstance().isInited()) {
             //Default Display Configuration
@@ -45,32 +71,6 @@ public class UILManager {
             ImageLoader.getInstance().init(config);                 //Set Our Loader as THE ImageLoader
         }
         return ImageLoader.getInstance();
-    }
-
-    public static DisplayImageOptions getRoundImage() {
-        return new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .bitmapConfig(Bitmap.Config.RGB_565)            //SET THE IMAGE CONFIG SIZE
-                .imageScaleType(ImageScaleType.EXACTLY)         //SET THE IMAGE MAX SIZE
-                .showImageForEmptyUri(R.drawable.no_image)      //NO IMAGE FOUND
-                .showImageOnFail(R.drawable.no_image)           //IMAGE FAILED
-                .showImageOnLoading(R.drawable.load_image)      //WHILE LOADING
-                .displayer(new RoundedBitmapDisplayer(100))     //ROUND THE IMAGE
-                .build();                                       //Build the Image Config
-    }
-
-    public static DisplayImageOptions getNormalImage() {
-        //Display Configuration
-        return new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(false)
-                .bitmapConfig(Bitmap.Config.RGB_565)            //SET THE IMAGE CONFIG SIZE
-                .imageScaleType(ImageScaleType.EXACTLY)         //SET THE IMAGE MAX SIZE
-                .showImageForEmptyUri(R.drawable.no_image)      //NO IMAGE FOUND
-                .showImageOnFail(R.drawable.no_image)           //IMAGE FAILED
-                .showImageOnLoading(R.drawable.load_image)      //WHILE LOADING
-                .build();                                       //Build the Image Config
     }
 }
 

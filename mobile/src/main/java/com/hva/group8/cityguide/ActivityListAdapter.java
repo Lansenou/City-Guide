@@ -2,7 +2,6 @@ package com.hva.group8.cityguide;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
 import android.view.LayoutInflater;
@@ -58,11 +57,17 @@ public class ActivityListAdapter extends ArrayAdapter<ActivityItem> {
 
         // Lookup and populate view with Title
         TextView tvTitle = (TextView) convertView.findViewById(R.id.activityTekst1);
-        tvTitle.setText(UserInfo.getInstance().getLanguage().equals("nl") ? item.Title : item.TitleEN);
+        String title = UserInfo.getInstance().getLanguage().equals("nl") ? item.Title : item.TitleEN;
+        tvTitle.setSelected(true);
+        /*if (title.length() > 20) {
+            title.substring(0, 20);
+            title += "...";
+        }*/
+        tvTitle.setText(title);
 
         // Lookup and populate view with Distance
         TextView distance = (TextView) convertView.findViewById(R.id.distanceText);
-        DecimalFormat df = new DecimalFormat("#.00");
+        DecimalFormat df = new DecimalFormat("#.0");
         float tempDist = Float.parseFloat(df.format(item.Distance / 1000).replace(",", "."));
         distance.setText(String.valueOf(tempDist) + " km");
 
@@ -86,8 +91,8 @@ public class ActivityListAdapter extends ArrayAdapter<ActivityItem> {
         ratingBar.setRating(rating);
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(convertView.getResources().getColor(R.color.star_full), PorterDuff.Mode.SRC_ATOP); //FULL
-        stars.getDrawable(1).setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP); //Lines
-        stars.getDrawable(0).setColorFilter(convertView.getResources().getColor(R.color.star_back), PorterDuff.Mode.SRC_ATOP); //EMPTY
+        //stars.getDrawable(1).setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP); //Lines
+        stars.getDrawable(0).setColorFilter(convertView.getResources().getColor(R.color.transparent), PorterDuff.Mode.SRC_ATOP); //EMPTY
 
         //Stuff needed to load the picture and show/remove the progressbar
         final ProgressBar progressBar = (ProgressBar) convertView.findViewById(R.id.loadingPanel);

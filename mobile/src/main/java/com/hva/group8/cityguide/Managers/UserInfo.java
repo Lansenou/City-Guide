@@ -25,8 +25,8 @@ public class UserInfo implements LocationListener {
     private static UserInfo instance;
     public boolean sendNotifications = true;
     public Toast toast;
+    public LocationManager manager;
     Context context;
-    private LocationManager manager;
     private String language = "";
     private String travelMode = "walking"; // walking \ driving \ bicycling \ transit
 
@@ -44,14 +44,19 @@ public class UserInfo implements LocationListener {
             manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
             this.context = context;
 
-            //Setup a location update requester
-            manager.requestLocationUpdates(
-                    LocationManager.GPS_PROVIDER,
-                    1000 * 60 * 1, // 1 minute
-                    10,            // 10 meter
-                    this);
+            //Get all the providers
+            List<String> providers = manager.getProviders(true);
 
-            //Add GPS Listener
+            //Loop through all the providers
+            for (String provider : providers) {
+                //Setup a location update requester
+                manager.requestLocationUpdates(
+                        provider,
+                        1500, // 1.5 seconds
+                        1,    // 1 meter
+                        this);
+            }
+            //Add GPS Listener0
             manager.addGpsStatusListener(new GpsStatus.Listener() {
                 @Override
                 public void onGpsStatusChanged(int event) {
@@ -88,9 +93,9 @@ public class UserInfo implements LocationListener {
         int hours = (int) time;
         int minutes = (int) ((time - hours) * 60);
 
-        String sHours = hours < 10 ? "0" + String.valueOf(hours) : String.valueOf(hours) + "";
-        String sMinutes = minutes < 10 ? "0" + String.valueOf(minutes) : String.valueOf(minutes) + "";
-        return sHours + "h:" + sMinutes + "m";
+        //String sHours = String.valueOf(hours);
+        //String sMinutes = minutes < 10 ? "0" + String.valueOf(minutes) : String.valueOf(minutes)  + "";
+        return String.valueOf(hours) + "h "  + String.valueOf(minutes) + "min";
     }
 
     public String getTravelMode() {
@@ -171,6 +176,7 @@ public class UserInfo implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         updateLocationList();
+        //MapsFragment.getInstance().setUpMap();
     }
 
     public void updateLocationList() {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hva.group8.cityguide" >
+    package="com.hva.group8.cityguide">
 
     <!-- Load app -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -31,7 +31,7 @@
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDJ6k9d63pRrpY5pZPNNoRosF6BbT0s-nc" />
+            android:value="@string/google_maps_api_key" />
 
 
         <activity

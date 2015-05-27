@@ -13,7 +13,7 @@
         android:background="@color/lighter_gray"
         android:focusable="false"
         android:iconifiedByDefault="false"
-        android:queryHint="@string/action_search" />
+        android:queryHint="@string/action_search"/>
 
     <ListView
         android:id="@+id/searchListView"
@@ -22,16 +22,10 @@
         android:layout_below="@+id/searchView"
         android:divider="@color/divider" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider" />
-
     <ExpandableListView
         android:id="@+id/expandableListView"
         android:layout_width="match_parent"
-        android:layout_height="381dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_height="match_parent"
         android:divider="@color/divider"
         android:layout_below="@+id/searchView" />
-</RelativeLayout><!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/mobile/src/main/res/layout/fragment_home.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/mobile/src/main/res/layout/fragment_home.xml -->

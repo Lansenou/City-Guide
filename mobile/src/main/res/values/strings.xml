@@ -82,8 +82,6 @@
     <string name="title_activity_settings">SettingsActivity</string>
 
     <string name="hello_world">Hello world!</string>
-
-
     <!-- Settings Screen -->
 
     <string name="settings_language" translatable="false">Language</string>
@@ -150,5 +148,6 @@
     <string name="tab_rate">Rating</string>
     <string name="action_send">Route has been sent to your smartwatch!</string>
     <string name="action_send_title">Sending Route</string>
+    <string name="no_calender">Opening times are currently unavailable.</string>
 
 </resources>

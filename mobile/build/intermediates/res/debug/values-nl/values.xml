@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/mobile/src/main/res/values-nl/strings.xml -->
+    <!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/mobile/src/main/res/values-nl/strings.xml -->
     <eat-comment/>
     <string-array name="hold_add">
         <item>Voeg locatie toe</item>
@@ -33,7 +33,7 @@
         <item>Openbaar vervoer</item>
         <item>Auto</item>
     </string-array>
-    <!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/mobile/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/res/values-nl/values.xml -->
+    <!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/mobile/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/res/values-nl/values.xml -->
     <eat-comment/>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Navigeren naar startpositie"</string>
     <string msgid="1594238315039666878" name="abc_action_bar_up_description">"Omhoog navigeren"</string>
@@ -48,13 +48,17 @@
     <string msgid="893419373245838918" name="abc_searchview_description_voice">"Gesproken zoekopdracht"</string>
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Delen met"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Delen met %s"</string>
-    <!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/mobile/src/main/res/values-nl/strings.xml -->
+    <!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/mobile/src/main/res/values-nl/strings.xml -->
     <eat-comment/>
     <string name="action_add">Voeg toe!</string>
     <string name="action_addlocation">Voeg een nieuwe locatie toe!</string>
     <string name="action_currentlocation">Uw huidige locatie.</string>
+    <string name="action_loading">Een ogenblik alstublieft.</string>
+    <string name="action_loading_title">Laden!</string>
     <string name="action_route">Wissel weergave!</string>
     <string name="action_search">Zoek een locatie..</string>
+    <string name="action_send">De route is verstuurd naar uw smartwatch!</string>
+    <string name="action_send_title">Route Versturen</string>
     <string name="action_settings">Instellingen</string>
     <string name="action_website">Website hier!</string>
     <string name="app_name">City Guide</string>
@@ -65,7 +69,7 @@
     <string name="cat_museum">Museum and gallerijen</string>
     <string name="cat_night">Uitgaan</string>
     <string name="category">Categorie</string>
-    <!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/mobile/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/res/values-nl/common_strings.xml -->
+    <!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/mobile/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/res/values-nl/common_strings.xml -->
     <eat-comment/>
     <string msgid="473679118463211576" name="common_android_wear_notification_needs_update_text">"Er is een update van de Android Wear-app vereist voor een bepaalde app."</string>
     <string msgid="3046420540094071256" name="common_android_wear_update_text">"Deze app wordt niet uitgevoerd, tenzij u de Android Wear-app updatet."</string>
@@ -98,7 +102,7 @@
     <string msgid="9071884888741449141" name="common_signin_button_text">"Inloggen"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"Inloggen met Google"</string>
     <string msgid="5000919058582214855" name="commono_google_play_services_api_unavailable_text">"Voor deze app zijn een of meer Google Play-services vereist die momenteel niet beschikbaar zijn. Neem contact op met de ontwikkelaar voor ondersteuning."</string>
-    <!-- From: file:/C:/Users/Lansenou/Desktop/City-Guide-Fragments/City-Guide/mobile/src/main/res/values-nl/strings.xml -->
+    <!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/mobile/src/main/res/values-nl/strings.xml -->
     <eat-comment/>
     <string name="gps_not_found">Wij hebben geen GPS locatie kunnen vinden.
     Nu nemen wij het middelpunt van Amsterdam als locatie.</string>
@@ -108,6 +112,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="nearby">Dichtbij</string>
+    <string name="no_calender">Er zijn geen openingstijden beschikbaar.</string>
     <string name="settings_notifications">Notifcaties</string>
     <string name="settings_notifications_hint">Zet Smartwatch notifcaties aan/uit!</string>
     <string name="settings_time">Tijd over</string>
@@ -132,6 +137,9 @@
     <string name="sub_theater">Theater</string>
     <string name="sub_wellness">Wellness</string>
     <string name="sub_youththeater">Theater voor de jeugd</string>
+    <string name="tab_dist">Afstand</string>
+    <string name="tab_name">Naam</string>
+    <string name="tab_rate">Beoordeling</string>
     <string name="title_activity_category_list">Categorie</string>
     <string name="title_activity_maps">Kaart</string>
     <string name="title_activity_route">Route</string>
@@ -147,6 +155,7 @@
     </string>
     <string name="toast_found">Gevonden activiteiten: </string>
     <string name="toast_full">Lijst heeft limit van 8 bereikt</string>
+    <string name="toast_removed">Activiteit verwijderd</string>
     <string name="top10">Top 10 locaties</string>
     <string name="user_location">Uw locatie!</string>
 </resources>

@@ -4,11 +4,8 @@
     <color name="red">#D32F2F</color>
     <color name="text_gray">#505050</color>
     <color name="star_full">#ff363636</color>
-    <color name="star_back">#00000000</color>
     <color name="lighter_gray">#EBEBEB</color>
     <color name="divider">#D1D1D1</color>
-    <color name="ListViewText">#000000</color>
+    <color name="ListViewText">#ff2f2f2f</color>
     <color name="transparent">#00000000</color>
-
-
 </resources>

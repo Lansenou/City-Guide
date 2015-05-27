@@ -12,37 +12,46 @@
 
     <fragment
         android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        tools:layout="@layout/activity_main"
-        android:layout_above="@+id/relativeLayout" />
+        android:layout_above="@+id/relativeLayout"
+        tools:layout="@layout/activity_main" />
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/relativeLayout">
+        android:layout_alignParentBottom="true">
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="9.7km"
-            android:id="@+id/textView2"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/textView3"
-            android:layout_toStartOf="@+id/textView3" />
+            android:layout_toStartOf="@+id/textView3"
+            android:text="9.7km" />
 
         <TextView
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/textView2"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:text="00:05min"
-            android:id="@+id/textView3"
-            android:layout_alignTop="@+id/textView2"
-            android:layout_centerHorizontal="true" />
+            android:text="00:05min" />
 
+        <EditText
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_toEndOf="@+id/textView3"
+            android:layout_toRightOf="@+id/textView3" />
 
 
     </RelativeLayout>

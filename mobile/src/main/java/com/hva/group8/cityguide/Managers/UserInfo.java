@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.hva.group8.cityguide.ActivityItem;
-import com.hva.group8.cityguide.R;
+import com.hva.group8.cityguide.MapsFragment;
 import com.hva.group8.cityguide.RouteFragment;
 
 import java.util.List;
@@ -50,11 +50,7 @@ public class UserInfo implements LocationListener {
             //Loop through all the providers
             for (String provider : providers) {
                 //Setup a location update requester
-                manager.requestLocationUpdates(
-                        provider,
-                        1500, // 1.5 seconds
-                        1,    // 1 meter
-                        this);
+                manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 3, this);
             }
             //Add GPS Listener0
             manager.addGpsStatusListener(new GpsStatus.Listener() {
@@ -118,7 +114,7 @@ public class UserInfo implements LocationListener {
         Location locationA = getLastKnownLocation();
         //Location Can't be null
         if (locationA == null) {
-            newToast(context, context.getText(R.string.gps_not_found).toString(), Toast.LENGTH_LONG);
+            //newToast(context, context.getText(R.string.gps_not_found).toString(), Toast.LENGTH_LONG);
             locationA = new Location("Amsterdam");
             locationA.setLatitude(52.370215700000000000);    //DEFAULT AMSTERDAM LAT
             locationA.setLongitude(4.895167899999933000);    //DEFAULT AMSTERDAM LONG
@@ -176,7 +172,7 @@ public class UserInfo implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         updateLocationList();
-        //MapsFragment.getInstance().setUpMap();
+        MapsFragment.getInstance().onLocationChanged(location);
     }
 
     public void updateLocationList() {

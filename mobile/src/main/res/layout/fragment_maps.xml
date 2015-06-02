@@ -43,17 +43,6 @@
             android:layout_marginStart="10dp"
             android:text="00:05min" />
 
-        <EditText
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView3"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_toEndOf="@+id/textView3"
-            android:layout_toRightOf="@+id/textView3" />
-
-
     </RelativeLayout>
 
 </RelativeLayout>

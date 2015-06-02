@@ -9,11 +9,11 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@color/divider"
         android:background="@color/lighter_gray"
+        android:divider="@color/divider"
         android:focusable="false"
         android:iconifiedByDefault="false"
-        android:queryHint="@string/action_search"/>
+        android:queryHint="@string/action_search" />
 
     <ListView
         android:id="@+id/searchListView"
@@ -26,6 +26,6 @@
         android:id="@+id/expandableListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/divider"
-        android:layout_below="@+id/searchView" />
+        android:layout_below="@+id/searchView"
+        android:divider="@color/divider" />
 </RelativeLayout><!-- From: file:/C:/Users/Lansenou/Desktop/Git/City-Guide/mobile/src/main/res/layout/fragment_home.xml -->

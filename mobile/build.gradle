@@ -19,7 +19,10 @@ android {
             resValue "string", "google_maps_api_key", "AIzaSyDBGnEgKjT4mSYMpjV2zml4XQTuPsmljKU"
         }
         debug {
-            resValue "string", "google_maps_api_key", "AIzaSyDJ6k9d63pRrpY5pZPNNoRosF6BbT0s-nc"
+            //PC
+            // resValue "string", "google_maps_api_key", "AIzaSyDJ6k9d63pRrpY5pZPNNoRosF6BbT0s-nc"
+            //Laptop
+            resValue "string", "google_maps_api_key", "AIzaSyDjuvAYLT_gA6w2jfEoVnO0moTkMrZ9GNc"
         }
     }
 }

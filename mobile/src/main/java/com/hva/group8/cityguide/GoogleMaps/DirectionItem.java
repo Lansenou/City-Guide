@@ -4,25 +4,28 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
-/**
- * Created by Reinier on 27-5-2015.
- */
 public class DirectionItem {
 
     private ArrayList<LatLng> geoPoints;
+    private ArrayList<LatLng> startPoints;
     private ArrayList<String> HTMLDirection;
 
-    public DirectionItem(ArrayList<LatLng> geoPoints, ArrayList<String> HTMLDirection) {
+    public DirectionItem(ArrayList<LatLng> geoPoints, ArrayList<String> HTMLDirection, ArrayList<LatLng> startPoints) {
         this.geoPoints = geoPoints;
         this.HTMLDirection = HTMLDirection;
+        this.startPoints = startPoints;
     }
 
     public ArrayList<LatLng> getGeoPoints() {
         return geoPoints;
     }
 
+    public ArrayList<LatLng> getStartPoints() {
+        return startPoints;
+    }
+
     public ArrayList<String> getHTMLDirection() {
         return HTMLDirection;
     }
-
 }
+

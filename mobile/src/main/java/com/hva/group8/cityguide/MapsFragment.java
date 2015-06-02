@@ -50,7 +50,9 @@ public class MapsFragment extends Fragment implements LocationSource.OnLocationC
     private LatLng ourLocation = userInfo.getLatLng();
     private SupportMapFragment fragment;
     private GoogleDirection googleDirection;
-    private Document mDoc; // Maps doc
+
+    private Document currentDoc; // Maps doc
+    private Document mDoc;       // Maps doc
     private DirectionItem mItem;
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
 
@@ -74,8 +76,7 @@ public class MapsFragment extends Fragment implements LocationSource.OnLocationC
 
         setHasOptionsMenu(true);
 
-        //Instantiate GoogleDirection
-        googleDirection = new GoogleDirection(getActivity().getApplicationContext());
+        SetupDirection();
 
         setUpMapIfNeeded();
 
@@ -108,6 +109,31 @@ public class MapsFragment extends Fragment implements LocationSource.OnLocationC
                 });
             }
         }
+    }
+
+    void SetupDirection() {
+        //Instantiate GoogleDirection
+        googleDirection = new GoogleDirection(getActivity().getApplicationContext());
+        googleDirection.setOnDirectionResponseListener(new GoogleDirection.OnDirectionResponseListener() {
+            @Override
+            public void onResponse(String status, Document doc, GoogleDirection gd) {
+                mDoc = doc;
+                if (currentDoc == null) {
+                    currentDoc = mDoc;
+                    mItem = gd.getDirection(mDoc);
+                    Log.e("Item", mItem.getHTMLDirection().toString());
+                }
+
+                //Our location changed
+                Location myLocation = new Location("myLocation");
+                myLocation.setLongitude(ourLocation.longitude);
+                myLocation.setLatitude(ourLocation.latitude);
+                onLocationChanged(myLocation);
+
+                //Add a line to our map
+                mMap.addPolyline(googleDirection.getPolyline(doc, 3, Color.RED));
+            }
+        });
     }
 
     @Override
@@ -147,8 +173,8 @@ public class MapsFragment extends Fragment implements LocationSource.OnLocationC
         //Add our location to the map
         //mMap.addMarker(new MarkerOptions().position(ourLocation).title("You are here!").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)).snippet(userInfo.getLatLng().toString()));
 
-        if (mDoc != null)
-            mMap.addPolyline(googleDirection.getPolyline(mDoc, 3, Color.RED));
+        if (currentDoc != null)
+            mMap.addPolyline(googleDirection.getPolyline(currentDoc, 3, Color.RED));
 
         //Move camera to our location
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ourLocation, 15.0f));
@@ -165,8 +191,7 @@ public class MapsFragment extends Fragment implements LocationSource.OnLocationC
         if (mItem != null)
             return;
 
-
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < list.size(); i++) {
             LatLng lastLocation;
             if (i == 0)
                 lastLocation = userInfo.getLatLng();
@@ -174,39 +199,22 @@ public class MapsFragment extends Fragment implements LocationSource.OnLocationC
                 ActivityItem lastItem = list.get(i - 1);
                 lastLocation = new LatLng(lastItem.Latitude, lastItem.Longitude);
             }
+
             final ActivityItem item = list.get(i);
+            //Markers
+            //Create a new marker to show on the map
+            MarkerOptions marker = new MarkerOptions();
+            //Position
+            marker.position(new LatLng(item.Latitude, item.Longitude));
+            //Title
+            marker.title(userInfo.getLanguage().equals("nl") ? item.Title : item.TitleEN);
+            //Description
+            String snippet = (userInfo.getLanguage().equals("nl") ? item.Calender : item.CalenderEN);
+            marker.snippet(snippet);
+            //Add marker to the map
+            mMap.addMarker(marker);
 
             googleDirection.request(lastLocation, new LatLng(item.Latitude, item.Longitude), GoogleDirection.MODE_WALKING);
-            googleDirection.setOnDirectionResponseListener(new GoogleDirection.OnDirectionResponseListener() {
-                @Override
-                public void onResponse(String status, Document doc, GoogleDirection gd) {
-                    mDoc = doc;
-                    mItem = gd.getDirection(mDoc);
-                    Log.e("Item", mItem.getHTMLDirection().toString());
-
-                    //Our location changed
-                    Location myLocation = new Location("myLocation");
-                    myLocation.setLongitude(ourLocation.longitude);
-                    myLocation.setLatitude(ourLocation.latitude);
-                    onLocationChanged(myLocation);
-
-                    //Add a line to our map
-                    mMap.addPolyline(googleDirection.getPolyline(doc, 3, Color.RED));
-
-                    //Markers
-                    //Create a new marker to show on the map
-                    MarkerOptions marker = new MarkerOptions();
-                    //Position
-                    marker.position(new LatLng(item.Latitude, item.Longitude));
-                    //Title
-                    marker.title(userInfo.getLanguage().equals("nl") ? item.Title : item.TitleEN);
-                    //Description
-                    String snippet = (userInfo.getLanguage().equals("nl") ? item.Calender : item.CalenderEN);
-                    marker.snippet(snippet);
-                    //Add marker to the map
-                    mMap.addMarker(marker);
-                }
-            });
         }
         googleDirection.setLogging(true);
     }

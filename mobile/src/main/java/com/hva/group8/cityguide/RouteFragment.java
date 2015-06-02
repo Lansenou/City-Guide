@@ -35,6 +35,14 @@ import java.util.List;
 public class RouteFragment extends Fragment {
 
     private static RouteFragment instance;
+    //Managers
+    RouteManager routeManager = RouteManager.getInstance();
+    UILManager uilManager = UILManager.instance();
+    UserInfo userInfo = UserInfo.getInstance();
+    List<ActivityItem> routeList = routeManager.routeList;
+    //Route Items
+    ListView listView;
+    RouteAdapter routeAdapter;
 
     public static RouteFragment getInstance() {
         if (instance == null)
@@ -46,19 +54,12 @@ public class RouteFragment extends Fragment {
         return (instance = new RouteFragment());
     }
 
-    //Managers
-    RouteManager routeManager = RouteManager.getInstance();
-    UILManager uilManager = UILManager.instance();
-    UserInfo userInfo = UserInfo.getInstance();
-    List<ActivityItem> routeList = routeManager.routeList;
-
-    //Route Items
-    ListView listView;
-    RouteAdapter routeAdapter;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_route, container, false);
+
+        if (this != instance || instance == null)
+            instance = this;
 
         //Set up list
         listView = (ListView) view.findViewById(R.id.routeListView);

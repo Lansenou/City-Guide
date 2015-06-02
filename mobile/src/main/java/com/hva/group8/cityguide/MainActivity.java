@@ -2,7 +2,10 @@ package com.hva.group8.cityguide;
 
 
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -17,6 +20,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.wearable.Asset;
+import com.google.android.gms.wearable.DataApi;
+import com.google.android.gms.wearable.PutDataMapRequest;
+import com.google.android.gms.wearable.PutDataRequest;
+import com.google.android.gms.wearable.Wearable;
 import com.hva.group8.cityguide.Loaders.DBConnect;
 import com.hva.group8.cityguide.Managers.RouteManager;
 import com.hva.group8.cityguide.Managers.UserInfo;
@@ -24,17 +35,22 @@ import com.hva.group8.cityguide.Managers.UserInfo;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
+    public static final String PATH_DISMISS = "/dismissnotification";
+    public static final String KEY_TITLE = "title";
+    public static final String KEY_IMAGE = "image";
     private static MainActivity instance;
     //Navigation Drawer
     public ActionBarDrawerToggle mDrawerToggle;
     //Fragments
     public ViewPager pager;
+    int count = 0;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private CharSequence mDrawerTitle;
@@ -42,11 +58,18 @@ public class MainActivity extends ActionBarActivity {
     private CustomDrawerAdapter mDrawerAdapter;
     private List<DrawerItem> mDrawerItems = new ArrayList<DrawerItem>();
     private MainFragment mainFragment;
+    private GoogleApiClient mGoogleApiClient;
 
     public static MainActivity getInstance() {
         if (instance == null)
             instance = new MainActivity();
         return instance;
+    }
+
+    private static Asset createAssetFromBitmap(Bitmap bitmap) {
+        final ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream);
+        return Asset.createFromBytes(byteStream.toByteArray());
     }
 
     @Override
@@ -68,6 +91,16 @@ public class MainActivity extends ActionBarActivity {
         pager = (ViewPager) mainFragment.getView().findViewById(R.id.pager);
         if (pager == null) {
             Log.i("Pager was", "null!");
+        }
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(Wearable.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
+
+        if (!mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.connect();
         }
     }
 
@@ -137,7 +170,6 @@ public class MainActivity extends ActionBarActivity {
         DBConnect.Insert(nameValuePairs, "http://www.lansenou.com/database/likes.php");
     }
 
-
     //Switch Fragments
     private void SwitchFragment(Fragment fragment, int navBarPos, int pagerPage) {
         mDrawerList.setItemChecked(navBarPos, true);
@@ -188,6 +220,29 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
+    public void sendMessage(String message) {
+        if (mGoogleApiClient.isConnected()) {
+            PutDataMapRequest putDataMapRequest = PutDataMapRequest.create(message);
+
+            // Add data to the request
+            putDataMapRequest.getDataMap().putString(SyncStateContract.Constants.CONTENT_DIRECTORY, String.format("hello world! %d", count++));
+
+            Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.appicon);
+            Asset asset = createAssetFromBitmap(icon);
+            putDataMapRequest.getDataMap().putAsset(KEY_IMAGE, asset);
+
+            PutDataRequest request = putDataMapRequest.asPutDataRequest();
+
+            Wearable.DataApi.putDataItem(mGoogleApiClient, request)
+                    .setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
+                        @Override
+                        public void onResult(DataApi.DataItemResult dataItemResult) {
+                            Log.d("Got Watch Result", "putDataItem status: " + dataItemResult.getStatus().toString());
+                        }
+                    });
+        }
+    }
+
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
@@ -228,5 +283,20 @@ public class MainActivity extends ActionBarActivity {
             if (!mainFragment.onBackPressed())
                 getSupportFragmentManager().popBackStack();
         }
+    }
+
+
+    @Override
+    public void onConnected(Bundle bundle) {
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        Log.e("Phone", "Failed to connect to Google Api Client with error code "
+                + connectionResult.getErrorCode());
     }
 }

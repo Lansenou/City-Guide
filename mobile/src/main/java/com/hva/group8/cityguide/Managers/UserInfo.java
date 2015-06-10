@@ -11,9 +11,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.hva.group8.cityguide.ActivityItem;
+import com.hva.group8.cityguide.MainActivity;
 import com.hva.group8.cityguide.MapsFragment;
+import com.hva.group8.cityguide.MyApp;
 import com.hva.group8.cityguide.RouteFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -26,7 +29,8 @@ public class UserInfo implements LocationListener {
     public boolean sendNotifications = true;
     public Toast toast;
     public LocationManager manager;
-    Context context;
+
+    private Context context;
     private String language = "";
     private String travelMode = "walking"; // walking \ driving \ bicycling \ transit
 
@@ -42,7 +46,6 @@ public class UserInfo implements LocationListener {
             getInstance();
             //Set our location manager
             manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-            this.context = context;
 
             //Get all the providers
             List<String> providers = manager.getProviders(true);
@@ -67,15 +70,18 @@ public class UserInfo implements LocationListener {
             return;
         if (toast != null)
             toast.cancel();
-        toast = Toast.makeText(this.context, text, duration);
+        toast = Toast.makeText(context, text, duration);
         toast.show();
     }
 
     public float getDistance(Context context, double targetLong, double targetLat) {
         //Context can't be null
         if (context == null) {
-            Log.e("userInfo", "Context was null");
-            return 0;
+            context = MainActivity.getInstance().getApplicationContext();
+            if (context == null) {
+                Log.e("userInfo", "Context was null");
+                return 0;
+            }
         }
         if (manager == null) {
             instantiate(context);
@@ -129,6 +135,7 @@ public class UserInfo implements LocationListener {
             Log.e("userInfo", "Manager was null");
             return 0;
         }
+
         //Get the last known location from the gps
         Location locationA = getLastKnownLocation();
 
@@ -149,22 +156,45 @@ public class UserInfo implements LocationListener {
     private Location getLastKnownLocation() {
         Location bestLocation = null;
 
-        //Get all the providers
-        List<String> providers = manager.getProviders(true);
-
-        //Loop through all the providers
-        for (String provider : providers) {
-            Location l = manager.getLastKnownLocation(provider);
-
-            if (l == null) {
-                continue;
-            }
-            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
-                bestLocation = l;
+        if (context == null) {
+            context = MyApp.getContext();
+            if (context == null) {
+                context = MainActivity.getInstance().getApplicationContext();
             }
         }
-        if (bestLocation == null) {
-            return null;
+
+        if (manager == null && context  != null)
+            manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+
+        if (manager == null)
+            return new Location("empty");
+
+        //Get all the providers
+        try {
+            List<String> providers = manager.getProviders(true);
+
+            if (providers.isEmpty() || providers == null) {
+                providers = new ArrayList<>();
+                providers.add("NETWORK_PROVIDER");
+                providers.add("GPS_PROVIDER");
+            }
+
+
+            //Loop through all the providers
+            for (String provider : providers) {
+                Location l = manager.getLastKnownLocation(provider);
+                if (l == null) {
+                    continue;
+                }
+                if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                    bestLocation = l;
+                }
+            }
+            if (bestLocation == null) {
+                return null;
+            }
+        } catch (Exception e) {
+            Log.e("Error", e.toString());
         }
         return bestLocation;
     }

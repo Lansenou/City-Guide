@@ -1,6 +1,7 @@
 package com.hva.group8.cityguide;
 
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -220,18 +221,26 @@ public class MainActivity extends ActionBarActivity implements GoogleApiClient.C
         }
     }
 
-    public void sendMessage(String message) {
+    public void sendMessage(String message, Bitmap image, Bitmap maneuver) {
         if (mGoogleApiClient.isConnected()) {
             PutDataMapRequest putDataMapRequest = PutDataMapRequest.create(message);
 
             // Add data to the request
             putDataMapRequest.getDataMap().putString(SyncStateContract.Constants.CONTENT_DIRECTORY, String.format("hello world! %d", count++));
 
+            //Icon
             Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.appicon);
             Asset asset = createAssetFromBitmap(icon);
-            putDataMapRequest.getDataMap().putAsset(KEY_IMAGE, asset);
 
             PutDataRequest request = putDataMapRequest.asPutDataRequest();
+
+            //Background
+            Asset backgroundAsset = createAssetFromBitmap(image);
+            Asset maneuverAsset = createAssetFromBitmap(maneuver);
+
+            //Add assets to the datamap
+            request.putAsset("BACKGROUND", backgroundAsset);
+            request.putAsset("MANEUVER", maneuverAsset);
 
             Wearable.DataApi.putDataItem(mGoogleApiClient, request)
                     .setResultCallback(new ResultCallback<DataApi.DataItemResult>() {

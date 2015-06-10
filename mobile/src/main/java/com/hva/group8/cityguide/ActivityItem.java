@@ -1,5 +1,7 @@
 package com.hva.group8.cityguide;
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 
 /**
@@ -22,4 +24,5 @@ public class ActivityItem implements Serializable {
     public String TravelTime;
     public int Likes;
     public int Dislikes;
+    public Bitmap ImageBitmap;
 }

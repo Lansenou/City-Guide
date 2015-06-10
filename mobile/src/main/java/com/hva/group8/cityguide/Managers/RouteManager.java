@@ -35,11 +35,6 @@ public class RouteManager {
         //Update User
         UserInfo.getInstance().newToast(context, context.getString(R.string.toast_added) + (UserInfo.getInstance().getLanguage().equals("nl") ? item.Title : item.TitleEN), Toast.LENGTH_SHORT);
 
-        if (routeList.size() == 1) {
-            UserInfo.getInstance().newToast(context, context.getString(R.string.toast_added) + (UserInfo.getInstance().getLanguage().equals("nl") ? item.Title : item.TitleEN), Toast.LENGTH_SHORT);
-            MainActivity.getInstance().SwitchFragment(RouteFragment.newInstance(), true, 1);
-        }
-
         //Update route
         //RouteActivity.getInstance().UpdateList();
     }

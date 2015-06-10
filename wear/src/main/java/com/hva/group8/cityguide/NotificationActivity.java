@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
@@ -32,29 +33,31 @@ public class NotificationActivity extends Activity {
 
     public static final String EXTRA_TITLE = "title";
     public static final String EXTRA_IMAGE = "image";
-
-    private ImageView mImageView;
-    private TextView mTextView;
-    Random random;
+    public static final String EXTRA_MANEUVER = "maneuver";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notification);
 
-        mImageView = (ImageView) findViewById(R.id.image_view);
-        mTextView = (TextView) findViewById(R.id.text_view);
+        Log.e("NotificationActivity", "WTF");
 
         Intent intent = getIntent();
-        mTextView.setText(Html.fromHtml(intent.getStringExtra(EXTRA_TITLE)));
 
-        mTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // mTextView.setTextColor(Color.argb(255, random.nextInt(256), random.nextInt(256), random.nextInt(256)));
-            }
-        });
+        //Text
+        TextView mTextView = (TextView) findViewById(R.id.text_view);
+        String title = intent.getStringExtra(EXTRA_TITLE);
+        mTextView.setText(Html.fromHtml(title));
+
+        //Background
+        //ImageView background = (ImageView) findViewById(R.id.background);
+        //Bitmap backgroundImage = intent.getParcelableExtra(EXTRA_IMAGE);
+        //background.setImageBitmap(backgroundImage);
+
+        //Maneuver
+        ImageView maneuver = (ImageView) findViewById(R.id.image_view);
+        Bitmap maneuverImage = intent.getParcelableExtra(EXTRA_MANEUVER);
+        maneuver.setImageBitmap(maneuverImage);
     }
-
 }
 

@@ -37,6 +37,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.hva.group8.cityguide.ActivityItem;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -173,6 +174,20 @@ public class GoogleDirection {
 
 	public GoogleDirection(Context context) {
 		mContext = context;
+	}
+
+	public String request (LatLng start, LatLng end, String mode, int numberInArray) {
+		final String url = "http://maps.googleapis.com/maps/api/directions/xml?"
+				+ "origin=" + start.latitude + "," + start.longitude
+				+ "&destination=" + end.latitude + "," + end.longitude
+				+ "&sensor=false&units=metric&mode=" + mode;
+
+		if (isLogging)
+			Log.i("GoogleDirection", "URL : " + url);
+		RequestTask task = new RequestTask();
+		task.itemNumber = numberInArray;
+		task.execute(url);
+		return url;
 	}
 
 	public String request(LatLng start, LatLng end, String mode) {
@@ -321,9 +336,12 @@ public class GoogleDirection {
 
 	public DirectionItem getDirection(Document doc) {
 		NodeList nl1, nl2, nl3;
+		String m;
+		Node nl4;
 		ArrayList<LatLng> listGeopoints = new ArrayList<LatLng>();
 		ArrayList<String> htmlDirections = new ArrayList<String>();
 		ArrayList<LatLng> startPoints = new ArrayList<LatLng>();
+		ArrayList<String> images = new ArrayList<String>();
 		nl1 = doc.getElementsByTagName("step");
 		if (nl1.getLength() > 0) {
 			for (int i = 0; i < nl1.getLength(); i++) {
@@ -356,10 +374,18 @@ public class GoogleDirection {
 				lng = Double.parseDouble(lngNode.getTextContent());
 				listGeopoints.add(new LatLng(lat, lng));
 
+
+				try {
+					nl4 = nl2.item(getNodeIndex(nl2, "maneuver"));
+					m = nl4.getTextContent();
+				}catch(Exception e) {
+					m = "";
+				}
+				images.add(m);
 				htmlDirections.add(nl2.item(getNodeIndex(nl2, "html_instructions")).getTextContent());
 			}
 		}
-		DirectionItem item = new DirectionItem(listGeopoints, htmlDirections, startPoints);
+		DirectionItem item = new DirectionItem(listGeopoints, htmlDirections, startPoints, images);
 		return item;
 	}
 
@@ -615,6 +641,7 @@ public class GoogleDirection {
 
 	public interface OnDirectionResponseListener {
 		void onResponse(String status, Document doc, GoogleDirection gd);
+		void onResponse(String status, Document doc, GoogleDirection gd, int number);
 	}
 
 	public interface OnAnimateListener {
@@ -626,6 +653,8 @@ public class GoogleDirection {
 	}
 
 	private class RequestTask extends AsyncTask<String, Void, Document> {
+		public int itemNumber = -1;
+
 		protected Document doInBackground(String... url) {
 			try {
 				HttpClient httpClient = new DefaultHttpClient();
@@ -647,8 +676,12 @@ public class GoogleDirection {
 
 		protected void onPostExecute(Document doc) {
 			super.onPostExecute(doc);
-			if (mDirectionListener != null)
-				mDirectionListener.onResponse(getStatus(doc), doc, GoogleDirection.this);
+			if (mDirectionListener != null) {
+				if (itemNumber >= 0)
+					mDirectionListener.onResponse(getStatus(doc), doc, GoogleDirection.this, itemNumber);
+				else
+					mDirectionListener.onResponse(getStatus(doc), doc, GoogleDirection.this);
+			}
 		}
 
 		private String getStatus(Document doc) {

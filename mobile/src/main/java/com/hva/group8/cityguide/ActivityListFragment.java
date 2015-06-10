@@ -25,18 +25,9 @@ import java.util.List;
 
 public class ActivityListFragment extends SearchActivityFragment {
 
+
+    //Singleton
     public static ActivityListFragment instance;
-    //Other fragment sets these
-    public HomeGroupItem info;
-    public String tableName;
-    //Used to create listview
-    private List<ActivityItem> itemList;
-    private ListView listView;
-    private ActivityListAdapter adapter;
-    //Prevent from reloading every time the user click on a different tab
-    private boolean fragmentResume=false;
-    private boolean fragmentVisible=false;
-    private boolean fragmentOnCreated=false;
 
     public static ActivityListFragment getInstance() {
         if (instance == null)
@@ -44,9 +35,24 @@ public class ActivityListFragment extends SearchActivityFragment {
         return instance;
     }
 
+    //Called to create a new version for the tab pager
     public static ActivityListFragment newInstance() {
         return (instance = new ActivityListFragment());
     }
+
+    //Other fragment sets these
+    public HomeGroupItem info;
+    public String tableName;
+
+    //Used to create listview
+    private List<ActivityItem> itemList;
+    private ListView listView;
+    private ActivityListAdapter adapter;
+
+    //Prevent from reloading every time the user click on a different tab
+    private boolean fragmentResume=false;
+    private boolean fragmentVisible=false;
+    private boolean fragmentOnCreated=false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -103,8 +109,11 @@ public class ActivityListFragment extends SearchActivityFragment {
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
         nameValuePairs.add(new BasicNameValuePair("tableName", tableName));
         nameValuePairs.add(new BasicNameValuePair("query", info.Query));
-        Log.e("Query", info.Query + ", Tablename: " + tableName);
 
+        //Debug
+        Log.i("Query", info.Query + ", Tablename: " + tableName);
+
+        //Clean list
         itemList = new ArrayList<>();
 
         //Add adapter
@@ -150,6 +159,6 @@ public class ActivityListFragment extends SearchActivityFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        itemList.clear();
+        //itemList.clear();
     }
 }

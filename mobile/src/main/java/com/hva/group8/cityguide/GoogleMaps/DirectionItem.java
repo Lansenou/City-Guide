@@ -9,11 +9,13 @@ public class DirectionItem {
     private ArrayList<LatLng> geoPoints;
     private ArrayList<LatLng> startPoints;
     private ArrayList<String> HTMLDirection;
+    private ArrayList<String> images;
 
-    public DirectionItem(ArrayList<LatLng> geoPoints, ArrayList<String> HTMLDirection, ArrayList<LatLng> startPoints) {
+    public DirectionItem(ArrayList<LatLng> geoPoints, ArrayList<String> HTMLDirection, ArrayList<LatLng> startPoints, ArrayList<String> images) {
         this.geoPoints = geoPoints;
         this.HTMLDirection = HTMLDirection;
         this.startPoints = startPoints;
+        this.images = images;
     }
 
     public ArrayList<LatLng> getGeoPoints() {
@@ -27,5 +29,11 @@ public class DirectionItem {
     public ArrayList<String> getHTMLDirection() {
         return HTMLDirection;
     }
+
+    public ArrayList<String> getImages() {
+        return images;
+    }
+
+
 }
 

@@ -46,7 +46,7 @@ public class ActivityListAdapter extends ArrayAdapter<ActivityItem> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_list_layout, parent, false);
@@ -110,6 +110,7 @@ public class ActivityListAdapter extends ArrayAdapter<ActivityItem> {
             @Override
             public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                 progressBar.setVisibility(View.GONE);
+                getItem(position).ImageBitmap = loadedImage;
             }
         });
 

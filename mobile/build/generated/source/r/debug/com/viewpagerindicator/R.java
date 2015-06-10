@@ -175,19 +175,19 @@ public final class R {
 		public static final int common_signin_btn_text_normal_light = 0x7f020060;
 		public static final int common_signin_btn_text_pressed_dark = 0x7f020061;
 		public static final int common_signin_btn_text_pressed_light = 0x7f020062;
-		public static final int ic_plusone_medium_off_client = 0x7f02006c;
-		public static final int ic_plusone_small_off_client = 0x7f02006d;
-		public static final int ic_plusone_standard_off_client = 0x7f02006e;
-		public static final int ic_plusone_tall_off_client = 0x7f02006f;
-		public static final int powered_by_google_dark = 0x7f020074;
-		public static final int powered_by_google_light = 0x7f020075;
-		public static final int vpi__tab_indicator = 0x7f020099;
-		public static final int vpi__tab_selected_focused_holo = 0x7f02009a;
-		public static final int vpi__tab_selected_holo = 0x7f02009b;
-		public static final int vpi__tab_selected_pressed_holo = 0x7f02009c;
-		public static final int vpi__tab_unselected_focused_holo = 0x7f02009d;
-		public static final int vpi__tab_unselected_holo = 0x7f02009e;
-		public static final int vpi__tab_unselected_pressed_holo = 0x7f02009f;
+		public static final int ic_plusone_medium_off_client = 0x7f020070;
+		public static final int ic_plusone_small_off_client = 0x7f020071;
+		public static final int ic_plusone_standard_off_client = 0x7f020072;
+		public static final int ic_plusone_tall_off_client = 0x7f020073;
+		public static final int powered_by_google_dark = 0x7f020079;
+		public static final int powered_by_google_light = 0x7f02007a;
+		public static final int vpi__tab_indicator = 0x7f0200ab;
+		public static final int vpi__tab_selected_focused_holo = 0x7f0200ac;
+		public static final int vpi__tab_selected_holo = 0x7f0200ad;
+		public static final int vpi__tab_selected_pressed_holo = 0x7f0200ae;
+		public static final int vpi__tab_unselected_focused_holo = 0x7f0200af;
+		public static final int vpi__tab_unselected_holo = 0x7f0200b0;
+		public static final int vpi__tab_unselected_pressed_holo = 0x7f0200b1;
 	}
 	public static final class id {
 		public static final int adjust_height = 0x7f0a0017;

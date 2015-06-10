@@ -54,16 +54,28 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:19:17
 	android:name
 		ADDED from AndroidManifest.xml:19:27
-service#com.hva.group8.cityguide.NotificationListenerService
+activity#com.hva.group8.cityguide.NotificationActivity
 ADDED from AndroidManifest.xml:22:9
+	android:theme
+		ADDED from AndroidManifest.xml:26:13
+	android:exported
+		ADDED from AndroidManifest.xml:23:13
+	android:allowEmbedded
+		ADDED from AndroidManifest.xml:24:13
+	android:taskAffinity
+		ADDED from AndroidManifest.xml:25:13
 	android:name
-		ADDED from AndroidManifest.xml:22:18
+		ADDED from AndroidManifest.xml:22:19
+service#com.hva.group8.cityguide.NotificationListenerService
+ADDED from AndroidManifest.xml:27:9
+	android:name
+		ADDED from AndroidManifest.xml:27:18
 intent-filter#com.google.android.gms.wearable.BIND_LISTENER
-ADDED from AndroidManifest.xml:23:13
+ADDED from AndroidManifest.xml:28:13
 action#com.google.android.gms.wearable.BIND_LISTENER
-ADDED from AndroidManifest.xml:24:17
+ADDED from AndroidManifest.xml:29:17
 	android:name
-		ADDED from AndroidManifest.xml:24:25
+		ADDED from AndroidManifest.xml:29:25
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 MERGED from com.google.android.support:wearable:1.1.0:6:5
